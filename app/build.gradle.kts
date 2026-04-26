@@ -47,4 +47,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
+    implementation(libs.android.maps.utils)
 }

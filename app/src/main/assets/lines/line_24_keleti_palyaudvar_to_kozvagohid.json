@@ -1,6 +1,69 @@
 {
     "line_name": "24",
     "color": "#FFD800",
+    "z_index": 3,
+    "stops": [
+        {
+            "name": "Közvágóhíd H",
+            "lat": 47.467527,
+            "lng": 19.075886
+        },
+        {
+            "name": "Müpa - Nemzeti Színház H",
+            "lat": 47.471269,
+            "lng": 19.072969
+        },
+        {
+            "name": "Haller utca / Soroksári út",
+            "lat": 47.475285,
+            "lng": 19.071658
+        },
+        {
+            "name": "Haller utca / Mester utca",
+            "lat": 47.476099,
+            "lng": 19.076819
+        },
+        {
+            "name": "Balázs Béla utca",
+            "lat": 47.476775,
+            "lng": 19.081953
+        },
+        {
+            "name": "Nagyvárad tér M",
+            "lat": 47.479489,
+            "lng": 19.09034
+        },
+        {
+            "name": "Elnök utca",
+            "lat": 47.481763,
+            "lng": 19.09346
+        },
+        {
+            "name": "Golgota tér",
+            "lat": 47.485469,
+            "lng": 19.092919
+        },
+        {
+            "name": "Orczy tér",
+            "lat": 47.490273,
+            "lng": 19.090204
+        },
+        {
+            "name": "Magdolna utca",
+            "lat": 47.492873,
+            "lng": 19.087298
+        },
+        {
+            "name": "Dologház utca",
+            "lat": 47.496364,
+            "lng": 19.083399
+        },
+        {
+            "name": "Keleti pályaudvar M",
+            "lat": 47.49907,
+            "lng": 19.082552
+        }
+    ],
     "segment": "Keleti pályaudvar to Közvágóhíd",
     "coordinates": [
         [

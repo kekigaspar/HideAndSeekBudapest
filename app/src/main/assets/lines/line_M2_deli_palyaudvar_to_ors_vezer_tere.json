@@ -1,6 +1,64 @@
 {
     "line_name": "M2",
     "color": "#E41F18",
+    "z_index": 4,
+    "stops": [
+        {
+            "name": "Déli pályaudvar",
+            "lat": 47.50045,
+            "lng": 19.024604
+        },
+        {
+            "name": "Széll Kálmán tér",
+            "lat": 47.507533,
+            "lng": 19.026097
+        },
+        {
+            "name": "Batthyány tér",
+            "lat": 47.506826,
+            "lng": 19.038103
+        },
+        {
+            "name": "Kossuth Lajos tér",
+            "lat": 47.505511,
+            "lng": 19.045769
+        },
+        {
+            "name": "Deák Ferenc tér",
+            "lat": 47.497593,
+            "lng": 19.053857
+        },
+        {
+            "name": "Astoria",
+            "lat": 47.494825,
+            "lng": 19.062457
+        },
+        {
+            "name": "Blaha Lujza tér",
+            "lat": 47.497006,
+            "lng": 19.070274
+        },
+        {
+            "name": "Keleti pályaudvar",
+            "lat": 47.499683,
+            "lng": 19.082881
+        },
+        {
+            "name": "Puskás Ferenc Stadion",
+            "lat": 47.500174,
+            "lng": 19.106381
+        },
+        {
+            "name": "Pillangó utca",
+            "lat": 47.501204,
+            "lng": 19.120417
+        },
+        {
+            "name": "Örs vezér tere",
+            "lat": 47.502922,
+            "lng": 19.135963
+        }
+    ],
     "segment": "Déli pályaudvar to Örs vezér tere",
     "coordinates": [
         [

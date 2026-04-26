@@ -1,6 +1,89 @@
 {
     "line_name": "21",
     "color": "#009EE3",
+    "z_index": 3,
+    "stops": [
+        {
+            "name": "Széll Kálmán tér M",
+            "lat": 47.506647,
+            "lng": 19.023912
+        },
+        {
+            "name": "Déli pályaudvar M",
+            "lat": 47.500001,
+            "lng": 19.023809
+        },
+        {
+            "name": "Kék Golyó utca",
+            "lat": 47.497895,
+            "lng": 19.019895
+        },
+        {
+            "name": "Székács utca",
+            "lat": 47.49837,
+            "lng": 19.015183
+        },
+        {
+            "name": "Szent Orbán tér",
+            "lat": 47.499646,
+            "lng": 19.009608
+        },
+        {
+            "name": "Pethényi út",
+            "lat": 47.502828,
+            "lng": 19.00585
+        },
+        {
+            "name": "Nógrádi utca",
+            "lat": 47.503178,
+            "lng": 19.002916
+        },
+        {
+            "name": "Óra út",
+            "lat": 47.504642,
+            "lng": 18.997964
+        },
+        {
+            "name": "Istenhegyi lejtő",
+            "lat": 47.505566,
+            "lng": 18.99268
+        },
+        {
+            "name": "Adonis utca",
+            "lat": 47.503046,
+            "lng": 18.989882
+        },
+        {
+            "name": "Városkút",
+            "lat": 47.500114,
+            "lng": 18.989766
+        },
+        {
+            "name": "Svábhegy",
+            "lat": 47.497524,
+            "lng": 18.989742
+        },
+        {
+            "name": "Ordas út",
+            "lat": 47.49849,
+            "lng": 18.98057
+        },
+        {
+            "name": "Őzike köz",
+            "lat": 47.49954,
+            "lng": 18.976428
+        },
+        {
+            "name": "Fülemile út",
+            "lat": 47.499645,
+            "lng": 18.972592
+        },
+        {
+            "name": "Normafa, Gyermekvasút",
+            "lat": 47.500391,
+            "lng": 18.970653
+        }
+    ],
     "segment": "Széll Kálmán tér to Normafa",
     "coordinates": [
         [

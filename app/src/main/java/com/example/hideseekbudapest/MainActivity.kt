@@ -16,10 +16,16 @@ import java.io.InputStreamReader
 import com.google.android.gms.maps.model.PolylineOptions
 import android.graphics.Color
 import androidx.core.graphics.toColorInt
+import com.google.maps.android.ui.IconGenerator
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.CircleOptions
+import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var googleMap: GoogleMap
+
+    private val transitStops = mutableListOf<com.google.android.gms.maps.model.Circle>()
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -49,25 +55,61 @@ class MainActivity : AppCompatActivity() {
         try {
             val inputStream = assets.open(filePath)
             val jsonString = InputStreamReader(inputStream).readText()
-
             val jsonObject = JSONObject(jsonString)
 
-            // Extract the hex color directly from the JSON
+            val lineName = jsonObject.getString("line_name")
             val hexColor = jsonObject.getString("color")
-            val coordinatesArray = jsonObject.getJSONArray("coordinates")
+            val parsedColor = hexColor.toColorInt()
+            val zIndex = jsonObject.getDouble("z_index").toFloat()
 
+            // 1. Draw the Line
+            val coordinatesArray = jsonObject.getJSONArray("coordinates")
             val polylineOptions = PolylineOptions()
-                .color(Color.parseColor(hexColor)) // Apply the dynamic color
-                .width(15f)
+                .color(parsedColor)
+                .width(12f)
+                .zIndex(zIndex)
 
             for (i in 0 until coordinatesArray.length()) {
                 val coordinatePair = coordinatesArray.getJSONArray(i)
-                val lat = coordinatePair.getDouble(0)
-                val lng = coordinatePair.getDouble(1)
-                polylineOptions.add(LatLng(lat, lng))
+                polylineOptions.add(LatLng(coordinatePair.getDouble(0), coordinatePair.getDouble(1)))
             }
-
             googleMap.addPolyline(polylineOptions)
+
+            // 2. Draw the Label (Placed roughly in the middle of the line)
+            val midIndex = coordinatesArray.length() / 2
+            val midCoord = coordinatesArray.getJSONArray(midIndex)
+            val midLatLng = LatLng(midCoord.getDouble(0), midCoord.getDouble(1))
+
+            val iconGenerator = IconGenerator(this)
+            iconGenerator.setColor(parsedColor)
+            iconGenerator.setTextAppearance(android.R.style.TextAppearance_DeviceDefault_Inverse)
+            val iconBitmap = iconGenerator.makeIcon(lineName)
+
+            googleMap.addMarker(
+                MarkerOptions()
+                    .position(midLatLng)
+                    .icon(BitmapDescriptorFactory.fromBitmap(iconBitmap))
+                    .zIndex(zIndex + 0.5f) // Keep label slightly above the line
+            )
+
+            // 3. Draw the Stops
+            val stopsArray = jsonObject.getJSONArray("stops")
+            for (i in 0 until stopsArray.length()) {
+                val stopObj = stopsArray.getJSONObject(i)
+                val stopLatLng = LatLng(stopObj.getDouble("lat"), stopObj.getDouble("lng"))
+
+                val circle = googleMap.addCircle(
+                    CircleOptions()
+                        .center(stopLatLng)
+                        .radius(15.0) // 15 meters wide
+                        .fillColor(Color.WHITE)
+                        .strokeColor(Color.BLACK)
+                        .strokeWidth(3f)
+                        .zIndex(zIndex + 0.1f)
+                        .visible(false) // Hidden by default
+                )
+                transitStops.add(circle)
+            }
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -100,6 +142,16 @@ class MainActivity : AppCompatActivity() {
             loadAllTransitLines()
 
             checkLocationPermission()
+
+            googleMap.setOnCameraMoveListener {
+                val zoomLevel = googleMap.cameraPosition.zoom
+                val shouldShowStops = zoomLevel >= 13.5f // Adjust this float to change when stops appear
+
+                // Only loop through and update if the visibility state actually needs to change
+                if (transitStops.isNotEmpty() && transitStops[0].isVisible != shouldShowStops) {
+                    transitStops.forEach { it.isVisible = shouldShowStops }
+                }
+            }
         }
     }
 

@@ -1,6 +1,59 @@
 {
     "line_name": "M4",
     "color": "#4CA22F",
+    "z_index": 4,
+    "stops": [
+        {
+            "name": "Kelenföld vasútállomás",
+            "lat": 47.464255,
+            "lng": 19.020587
+        },
+        {
+            "name": "Bikás park",
+            "lat": 47.465022,
+            "lng": 19.033386
+        },
+        {
+            "name": "Újbuda-központ",
+            "lat": 47.473559,
+            "lng": 19.046266
+        },
+        {
+            "name": "Móricz Zsigmond körtér",
+            "lat": 47.47731,
+            "lng": 19.047645
+        },
+        {
+            "name": "Szent Gellért tér - Műegyetem",
+            "lat": 47.483039,
+            "lng": 19.055036
+        },
+        {
+            "name": "Fővám tér",
+            "lat": 47.486169,
+            "lng": 19.058009
+        },
+        {
+            "name": "Kálvin tér",
+            "lat": 47.489245,
+            "lng": 19.061938
+        },
+        {
+            "name": "Rákóczi tér",
+            "lat": 47.49276,
+            "lng": 19.072489
+        },
+        {
+            "name": "II. János Pál pápa tér",
+            "lat": 47.496078,
+            "lng": 19.077707
+        },
+        {
+            "name": "Keleti pályaudvar",
+            "lat": 47.500485,
+            "lng": 19.081704
+        }
+    ],
     "segment": "Kelenföld vasútállomás to Keleti pályaudvar",
     "coordinates": [
         [

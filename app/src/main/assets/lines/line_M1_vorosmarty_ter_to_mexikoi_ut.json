@@ -1,6 +1,64 @@
 {
     "line_name": "M1",
     "color": "#FFD800",
+    "z_index": 4,
+    "stops": [
+        {
+            "name": "Mexikói út",
+            "lat": 47.519592,
+            "lng": 19.090573
+        },
+        {
+            "name": "Széchenyi fürdő",
+            "lat": 47.517508,
+            "lng": 19.08098
+        },
+        {
+            "name": "Hősök tere",
+            "lat": 47.514055,
+            "lng": 19.076439
+        },
+        {
+            "name": "Bajza utca",
+            "lat": 47.511237,
+            "lng": 19.072271
+        },
+        {
+            "name": "Kodály körönd",
+            "lat": 47.509175,
+            "lng": 19.069116
+        },
+        {
+            "name": "Vörösmarty utca",
+            "lat": 47.507149,
+            "lng": 19.066118
+        },
+        {
+            "name": "Oktogon",
+            "lat": 47.504923,
+            "lng": 19.062823
+        },
+        {
+            "name": "Opera",
+            "lat": 47.502197,
+            "lng": 19.058761
+        },
+        {
+            "name": "Bajcsy-Zsilinszky út",
+            "lat": 47.499841,
+            "lng": 19.055259
+        },
+        {
+            "name": "Deák Ferenc tér",
+            "lat": 47.49772,
+            "lng": 19.05367
+        },
+        {
+            "name": "Vörösmarty tér",
+            "lat": 47.496671,
+            "lng": 19.050193
+        }
+    ],
     "segment": "Vörösmarty tér to Mexikói út",
     "coordinates": [
         [

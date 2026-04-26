@@ -1,6 +1,84 @@
 {
     "line_name": "76",
     "color": "#E41F18",
+    "z_index": 2,
+    "stops": [
+        {
+            "name": "Keleti pályaudvar M",
+            "lat": 47.499926,
+            "lng": 19.083587
+        },
+        {
+            "name": "Munkás utca",
+            "lat": 47.500188,
+            "lng": 19.079221
+        },
+        {
+            "name": "Péterfy Sándor utca",
+            "lat": 47.501636,
+            "lng": 19.077828
+        },
+        {
+            "name": "Rottenbiller utca / István utca",
+            "lat": 47.50304,
+            "lng": 19.076581
+        },
+        {
+            "name": "Rózsa utca",
+            "lat": 47.503733,
+            "lng": 19.074444
+        },
+        {
+            "name": "Dob utca",
+            "lat": 47.503877,
+            "lng": 19.072507
+        },
+        {
+            "name": "Izabella utca / Király utca",
+            "lat": 47.506099,
+            "lng": 19.069534
+        },
+        {
+            "name": "Andrássy út (Vörösmarty utca M)",
+            "lat": 47.507449,
+            "lng": 19.067716
+        },
+        {
+            "name": "Ferdinánd híd (Izabella utca)",
+            "lat": 47.511101,
+            "lng": 19.062753
+        },
+        {
+            "name": "Csanády utca (Lehel tér M)",
+            "lat": 47.515338,
+            "lng": 19.060178
+        },
+        {
+            "name": "Lehel tér M",
+            "lat": 47.517271,
+            "lng": 19.06063
+        },
+        {
+            "name": "Hegedűs Gyula utca",
+            "lat": 47.518227,
+            "lng": 19.055824
+        },
+        {
+            "name": "Szent István park",
+            "lat": 47.518335,
+            "lng": 19.051456
+        },
+        {
+            "name": "Radnóti Miklós utca",
+            "lat": 47.51586,
+            "lng": 19.049783
+        },
+        {
+            "name": "Jászai Mari tér",
+            "lat": 47.51389,
+            "lng": 19.049372
+        }
+    ],
     "segment": "Keleti pályaudvar to Jászai Mari tér",
     "coordinates": [
         [

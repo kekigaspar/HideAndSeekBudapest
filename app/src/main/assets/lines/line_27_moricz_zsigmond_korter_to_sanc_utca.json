@@ -1,6 +1,64 @@
 {
     "line_name": "27",
     "color": "#009EE3",
+    "z_index": 3,
+    "stops": [
+        {
+            "name": "Sánc utca",
+            "lat": 47.489425,
+            "lng": 19.035836
+        },
+        {
+            "name": "Szirtes út",
+            "lat": 47.488263,
+            "lng": 19.037081
+        },
+        {
+            "name": "Búsuló Juhász (Citadella)",
+            "lat": 47.485172,
+            "lng": 19.040614
+        },
+        {
+            "name": "Rezeda utca",
+            "lat": 47.48328,
+            "lng": 19.043544
+        },
+        {
+            "name": "Kelenhegyi lépcső",
+            "lat": 47.482003,
+            "lng": 19.045375
+        },
+        {
+            "name": "Balogh Tihamér utca",
+            "lat": 47.481898,
+            "lng": 19.042989
+        },
+        {
+            "name": "Iglói utca",
+            "lat": 47.483292,
+            "lng": 19.040535
+        },
+        {
+            "name": "Ménesi út",
+            "lat": 47.481835,
+            "lng": 19.038293
+        },
+        {
+            "name": "Szüret utca",
+            "lat": 47.480557,
+            "lng": 19.036674
+        },
+        {
+            "name": "Tas vezér utca",
+            "lat": 47.478606,
+            "lng": 19.040827
+        },
+        {
+            "name": "Móricz Zsigmond körtér M",
+            "lat": 47.47777,
+            "lng": 19.045935
+        }
+    ],
     "segment": "Móricz Zsigmond körtér to Sánc utca",
     "coordinates": [
         [
