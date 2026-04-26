@@ -11,6 +11,11 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import org.json.JSONObject
+import java.io.InputStreamReader
+import com.google.android.gms.maps.model.PolylineOptions
+import android.graphics.Color
+import androidx.core.graphics.toColorInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +26,51 @@ class MainActivity : AppCompatActivity() {
     ) { isGranted: Boolean ->
         if (isGranted) {
             enableUserLocation()
+        }
+    }
+
+    private fun loadAllTransitLines() {
+        try {
+            // Read all file names located specifically in the "lines" subfolder
+            val lineFiles = assets.list("lines")
+
+            if (lineFiles != null) {
+                for (fileName in lineFiles) {
+                    // Pass the full relative path to the drawing function
+                    drawTransitLine("lines/$fileName")
+                }
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun drawTransitLine(filePath: String) {
+        try {
+            val inputStream = assets.open(filePath)
+            val jsonString = InputStreamReader(inputStream).readText()
+
+            val jsonObject = JSONObject(jsonString)
+
+            // Extract the hex color directly from the JSON
+            val hexColor = jsonObject.getString("color")
+            val coordinatesArray = jsonObject.getJSONArray("coordinates")
+
+            val polylineOptions = PolylineOptions()
+                .color(Color.parseColor(hexColor)) // Apply the dynamic color
+                .width(15f)
+
+            for (i in 0 until coordinatesArray.length()) {
+                val coordinatePair = coordinatesArray.getJSONArray(i)
+                val lat = coordinatePair.getDouble(0)
+                val lng = coordinatePair.getDouble(1)
+                polylineOptions.add(LatLng(lat, lng))
+            }
+
+            googleMap.addPolyline(polylineOptions)
+
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -46,6 +96,8 @@ class MainActivity : AppCompatActivity() {
 
             val topPadding = (60 * resources.displayMetrics.density).toInt()
             googleMap.setPadding(0, topPadding, 0, 0)
+
+            loadAllTransitLines()
 
             checkLocationPermission()
         }
