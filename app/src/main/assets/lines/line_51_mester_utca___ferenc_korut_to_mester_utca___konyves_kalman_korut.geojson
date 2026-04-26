@@ -1,0 +1,271 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.068743,
+                        47.481637
+                    ],
+                    [
+                        19.077135,
+                        47.476317
+                    ],
+                    [
+                        19.082211,
+                        47.47115
+                    ],
+                    [
+                        19.082626,
+                        47.470655
+                    ],
+                    [
+                        19.082997,
+                        47.469814
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "51",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.08276,
+                        47.470226
+                    ],
+                    [
+                        19.082686,
+                        47.470656
+                    ],
+                    [
+                        19.08224,
+                        47.471176
+                    ],
+                    [
+                        19.077172,
+                        47.476341
+                    ],
+                    [
+                        19.072243,
+                        47.479527
+                    ],
+                    [
+                        19.068702,
+                        47.481608
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "51",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.068702,
+                        47.481608
+                    ],
+                    [
+                        19.077135,
+                        47.476317
+                    ],
+                    [
+                        19.082211,
+                        47.47115
+                    ],
+                    [
+                        19.082626,
+                        47.470655
+                    ],
+                    [
+                        19.082997,
+                        47.469814
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "51",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.068702,
+                    47.481608
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mester utca / Ferenc körút",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.072655,
+                    47.479116
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Bokréta utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.075785,
+                    47.477155
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Ferencvárosi rendelőintézet",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.077774,
+                    47.475649
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Haller utca / Mester utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.079922,
+                    47.473403
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vágóhíd utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.082997,
+                    47.469814
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mester utca / Könyves Kálmán körút",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.08276,
+                    47.470226
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mester utca / Könyves Kálmán körút",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.080293,
+                    47.473151
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vágóhíd utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.077615,
+                    47.475928
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Haller utca / Mester utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.072243,
+                    47.479527
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Bokréta utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        }
+    ]
+}

@@ -1,0 +1,672 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.072756,
+                        47.495699
+                    ],
+                    [
+                        19.081884,
+                        47.493604
+                    ],
+                    [
+                        19.086651,
+                        47.493217
+                    ],
+                    [
+                        19.08787,
+                        47.492234
+                    ],
+                    [
+                        19.088689,
+                        47.49194
+                    ],
+                    [
+                        19.103694,
+                        47.490042
+                    ],
+                    [
+                        19.108249,
+                        47.49004
+                    ],
+                    [
+                        19.119234,
+                        47.491228
+                    ],
+                    [
+                        19.121878,
+                        47.491316
+                    ],
+                    [
+                        19.122619,
+                        47.490885
+                    ],
+                    [
+                        19.122622,
+                        47.48967
+                    ],
+                    [
+                        19.122977,
+                        47.489221
+                    ],
+                    [
+                        19.123382,
+                        47.489126
+                    ],
+                    [
+                        19.124398,
+                        47.489424
+                    ],
+                    [
+                        19.140377,
+                        47.492143
+                    ],
+                    [
+                        19.14337,
+                        47.492177
+                    ],
+                    [
+                        19.14477,
+                        47.491733
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "37",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.144346,
+                        47.491941
+                    ],
+                    [
+                        19.143268,
+                        47.492216
+                    ],
+                    [
+                        19.140367,
+                        47.492173
+                    ],
+                    [
+                        19.124517,
+                        47.489473
+                    ],
+                    [
+                        19.123457,
+                        47.489161
+                    ],
+                    [
+                        19.123027,
+                        47.489232
+                    ],
+                    [
+                        19.122663,
+                        47.489683
+                    ],
+                    [
+                        19.122656,
+                        47.490904
+                    ],
+                    [
+                        19.121882,
+                        47.49135
+                    ],
+                    [
+                        19.119227,
+                        47.491263
+                    ],
+                    [
+                        19.109089,
+                        47.490149
+                    ],
+                    [
+                        19.103736,
+                        47.490082
+                    ],
+                    [
+                        19.088623,
+                        47.491985
+                    ],
+                    [
+                        19.087991,
+                        47.492238
+                    ],
+                    [
+                        19.08719,
+                        47.492962
+                    ],
+                    [
+                        19.086553,
+                        47.49327
+                    ],
+                    [
+                        19.082311,
+                        47.493599
+                    ],
+                    [
+                        19.071283,
+                        47.495999
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "37",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.072742,
+                    47.495648
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Blaha Lujza tér M (Népszínház utca)",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.07655,
+                    47.494819
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "II. János Pál pápa tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.081884,
+                    47.493604
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Teleki László tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.08787,
+                    47.492234
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Magdolna utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.097037,
+                    47.490864
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Salgótarjáni utca, temető",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.105515,
+                    47.490015
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Asztalos Sándor út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.108249,
+                    47.49004
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Hidegkuti Nándor Stadion",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.113995,
+                    47.490586
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kőbányai garázs",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.120286,
+                    47.491221
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pongrácz úti lakótelep",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.125008,
+                    47.489482
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Őrház",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.128353,
+                    47.490046
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Halom utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.132932,
+                    47.490825
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kőbánya felső vasútállomás",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.138666,
+                    47.491801
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Élessarok",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.14477,
+                    47.491733
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Sörgyár",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.144346,
+                    47.491941
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Sörgyár",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.138287,
+                    47.491828
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Élessarok",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.133158,
+                    47.490942
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kőbánya felső vasútállomás",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.128618,
+                    47.490163
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Halom utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.124517,
+                    47.489473
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Őrház",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.119782,
+                    47.491293
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pongrácz úti lakótelep",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.114248,
+                    47.490712
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kőbányai garázs",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.109669,
+                    47.490192
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Hidegkuti Nándor Stadion",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.105038,
+                    47.490096
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Asztalos Sándor út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.096334,
+                    47.491026
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Salgótarjáni utca, temető",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.087298,
+                    47.492873
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Magdolna utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.082787,
+                    47.493549
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Teleki László tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.077599,
+                    47.494666
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "II. János Pál pápa tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.071283,
+                    47.495999
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Blaha Lujza tér M (Népszínház utca)",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.088689,
+                    47.49194
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "37",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.121878,
+                    47.491316
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "37",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.123382,
+                    47.489126
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "37",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        }
+    ]
+}

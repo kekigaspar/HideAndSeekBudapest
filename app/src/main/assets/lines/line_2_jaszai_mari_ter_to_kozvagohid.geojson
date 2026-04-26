@@ -1,0 +1,716 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.075904,
+                        47.467579
+                    ],
+                    [
+                        19.07447,
+                        47.469504
+                    ],
+                    [
+                        19.069414,
+                        47.475556
+                    ],
+                    [
+                        19.068181,
+                        47.478634
+                    ],
+                    [
+                        19.066952,
+                        47.479272
+                    ],
+                    [
+                        19.064421,
+                        47.481687
+                    ],
+                    [
+                        19.060776,
+                        47.484283
+                    ],
+                    [
+                        19.05879,
+                        47.48498
+                    ],
+                    [
+                        19.056774,
+                        47.48677
+                    ],
+                    [
+                        19.052483,
+                        47.489981
+                    ],
+                    [
+                        19.051838,
+                        47.490568
+                    ],
+                    [
+                        19.050847,
+                        47.491881
+                    ],
+                    [
+                        19.050703,
+                        47.492284
+                    ],
+                    [
+                        19.048575,
+                        47.495183
+                    ],
+                    [
+                        19.04724,
+                        47.497564
+                    ],
+                    [
+                        19.046877,
+                        47.499039
+                    ],
+                    [
+                        19.046989,
+                        47.499607
+                    ],
+                    [
+                        19.046473,
+                        47.500081
+                    ],
+                    [
+                        19.045948,
+                        47.501036
+                    ],
+                    [
+                        19.045057,
+                        47.504586
+                    ],
+                    [
+                        19.045219,
+                        47.504823
+                    ],
+                    [
+                        19.045928,
+                        47.504961
+                    ],
+                    [
+                        19.046205,
+                        47.505587
+                    ],
+                    [
+                        19.047566,
+                        47.505769
+                    ],
+                    [
+                        19.047846,
+                        47.505974
+                    ],
+                    [
+                        19.047729,
+                        47.50833
+                    ],
+                    [
+                        19.047582,
+                        47.508483
+                    ],
+                    [
+                        19.046793,
+                        47.508602
+                    ],
+                    [
+                        19.046666,
+                        47.508888
+                    ],
+                    [
+                        19.046863,
+                        47.510033
+                    ],
+                    [
+                        19.047594,
+                        47.512262
+                    ],
+                    [
+                        19.047936,
+                        47.512837
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "2",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.047912,
+                        47.512843
+                    ],
+                    [
+                        19.047549,
+                        47.512249
+                    ],
+                    [
+                        19.046582,
+                        47.508879
+                    ],
+                    [
+                        19.046762,
+                        47.508561
+                    ],
+                    [
+                        19.0475,
+                        47.508457
+                    ],
+                    [
+                        19.047678,
+                        47.50829
+                    ],
+                    [
+                        19.047794,
+                        47.506001
+                    ],
+                    [
+                        19.047575,
+                        47.505813
+                    ],
+                    [
+                        19.046169,
+                        47.505625
+                    ],
+                    [
+                        19.045888,
+                        47.505001
+                    ],
+                    [
+                        19.045177,
+                        47.504842
+                    ],
+                    [
+                        19.045011,
+                        47.504587
+                    ],
+                    [
+                        19.045909,
+                        47.501031
+                    ],
+                    [
+                        19.04647,
+                        47.500011
+                    ],
+                    [
+                        19.04694,
+                        47.499608
+                    ],
+                    [
+                        19.046841,
+                        47.499043
+                    ],
+                    [
+                        19.047133,
+                        47.498153
+                    ],
+                    [
+                        19.04702,
+                        47.497969
+                    ],
+                    [
+                        19.048533,
+                        47.495183
+                    ],
+                    [
+                        19.051652,
+                        47.490719
+                    ],
+                    [
+                        19.052452,
+                        47.489967
+                    ],
+                    [
+                        19.056482,
+                        47.486941
+                    ],
+                    [
+                        19.058856,
+                        47.484919
+                    ],
+                    [
+                        19.060749,
+                        47.484255
+                    ],
+                    [
+                        19.064151,
+                        47.48184
+                    ],
+                    [
+                        19.066713,
+                        47.479305
+                    ],
+                    [
+                        19.068059,
+                        47.478708
+                    ],
+                    [
+                        19.069377,
+                        47.475547
+                    ],
+                    [
+                        19.074417,
+                        47.469502
+                    ],
+                    [
+                        19.075886,
+                        47.467527
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "2",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.075886,
+                    47.467527
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Közvágóhíd H",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.072969,
+                    47.471269
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Müpa - Nemzeti Színház H",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.069389,
+                    47.47574
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Haller utca / Soroksári út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.066074,
+                    47.480077
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Boráros tér H",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.062731,
+                    47.482946
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Zsil utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.056774,
+                    47.48677
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fővám tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.051612,
+                    47.490908
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Március 15. tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.048374,
+                    47.495549
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vigadó tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.047166,
+                    47.497852
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Eötvös tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046051,
+                    47.500892
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Széchenyi István tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.047299,
+                    47.505713
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kossuth Lajos tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046768,
+                    47.509176
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Országház, látogatóközpont",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.047936,
+                    47.512837
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Jászai Mari tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046582,
+                    47.508879
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Országház, látogatóközpont",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046834,
+                    47.505749
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kossuth Lajos tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046064,
+                    47.500685
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Széchenyi István tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.04702,
+                    47.497969
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Eötvös tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.048215,
+                    47.495837
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vigadó tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.051652,
+                    47.490719
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Március 15. tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.056482,
+                    47.486941
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fővám tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.062439,
+                    47.483036
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Zsil utca",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.066299,
+                    47.479726
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Boráros tér H",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.070622,
+                    47.474022
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Haller utca / Soroksári út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.073181,
+                    47.470972
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Müpa - Nemzeti Színház H",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.056774,
+                    47.48677
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "2",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046989,
+                    47.499607
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "2",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.047846,
+                    47.505974
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "2",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        }
+    ]
+}

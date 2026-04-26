@@ -1,0 +1,1216 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.038872,
+                        47.506613
+                    ],
+                    [
+                        19.039213,
+                        47.506798
+                    ],
+                    [
+                        19.039184,
+                        47.507763
+                    ],
+                    [
+                        19.03418,
+                        47.507767
+                    ],
+                    [
+                        19.034372,
+                        47.508268
+                    ],
+                    [
+                        19.034535,
+                        47.509871
+                    ],
+                    [
+                        19.034453,
+                        47.511114
+                    ],
+                    [
+                        19.03457,
+                        47.511119
+                    ],
+                    [
+                        19.034453,
+                        47.511114
+                    ],
+                    [
+                        19.034314,
+                        47.511761
+                    ],
+                    [
+                        19.032364,
+                        47.511203
+                    ],
+                    [
+                        19.03216,
+                        47.5114
+                    ],
+                    [
+                        19.030866,
+                        47.511623
+                    ],
+                    [
+                        19.030338,
+                        47.511876
+                    ],
+                    [
+                        19.029678,
+                        47.513417
+                    ],
+                    [
+                        19.02614,
+                        47.51422
+                    ],
+                    [
+                        19.024856,
+                        47.514266
+                    ],
+                    [
+                        19.023483,
+                        47.51507
+                    ],
+                    [
+                        19.023465,
+                        47.515365
+                    ],
+                    [
+                        19.024777,
+                        47.516473
+                    ],
+                    [
+                        19.023726,
+                        47.517131
+                    ],
+                    [
+                        19.02192,
+                        47.517521
+                    ],
+                    [
+                        19.020607,
+                        47.517557
+                    ],
+                    [
+                        19.021901,
+                        47.519561
+                    ],
+                    [
+                        19.022218,
+                        47.519787
+                    ],
+                    [
+                        19.020788,
+                        47.521522
+                    ],
+                    [
+                        19.017284,
+                        47.522866
+                    ],
+                    [
+                        19.016979,
+                        47.52315
+                    ],
+                    [
+                        19.016109,
+                        47.523238
+                    ],
+                    [
+                        19.009278,
+                        47.525622
+                    ],
+                    [
+                        19.008786,
+                        47.525947
+                    ],
+                    [
+                        19.00698,
+                        47.52809
+                    ],
+                    [
+                        19.004176,
+                        47.529028
+                    ],
+                    [
+                        19.003822,
+                        47.529305
+                    ],
+                    [
+                        19.003257,
+                        47.529297
+                    ],
+                    [
+                        18.99748,
+                        47.531198
+                    ],
+                    [
+                        18.994098,
+                        47.533024
+                    ],
+                    [
+                        18.993395,
+                        47.5337
+                    ],
+                    [
+                        18.993327,
+                        47.534063
+                    ],
+                    [
+                        18.993131,
+                        47.534072
+                    ],
+                    [
+                        18.993368,
+                        47.533628
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        18.993368,
+                        47.533628
+                    ],
+                    [
+                        18.99427,
+                        47.53291
+                    ],
+                    [
+                        18.998032,
+                        47.530905
+                    ],
+                    [
+                        19.002981,
+                        47.529395
+                    ],
+                    [
+                        19.0032,
+                        47.529173
+                    ],
+                    [
+                        19.003758,
+                        47.52917
+                    ],
+                    [
+                        19.00698,
+                        47.52809
+                    ],
+                    [
+                        19.008786,
+                        47.525947
+                    ],
+                    [
+                        19.00931,
+                        47.525522
+                    ],
+                    [
+                        19.016733,
+                        47.523072
+                    ],
+                    [
+                        19.020788,
+                        47.521522
+                    ],
+                    [
+                        19.021389,
+                        47.520855
+                    ],
+                    [
+                        19.021959,
+                        47.519832
+                    ],
+                    [
+                        19.02059,
+                        47.517593
+                    ],
+                    [
+                        19.020903,
+                        47.517394
+                    ],
+                    [
+                        19.021746,
+                        47.517537
+                    ],
+                    [
+                        19.023499,
+                        47.517189
+                    ],
+                    [
+                        19.024465,
+                        47.516534
+                    ],
+                    [
+                        19.024331,
+                        47.516116
+                    ],
+                    [
+                        19.023431,
+                        47.515311
+                    ],
+                    [
+                        19.023855,
+                        47.514715
+                    ],
+                    [
+                        19.025006,
+                        47.514147
+                    ],
+                    [
+                        19.026285,
+                        47.514141
+                    ],
+                    [
+                        19.029678,
+                        47.513417
+                    ],
+                    [
+                        19.030452,
+                        47.511764
+                    ],
+                    [
+                        19.032147,
+                        47.511283
+                    ],
+                    [
+                        19.032346,
+                        47.511076
+                    ],
+                    [
+                        19.034362,
+                        47.511719
+                    ],
+                    [
+                        19.034535,
+                        47.509871
+                    ],
+                    [
+                        19.03416,
+                        47.507702
+                    ],
+                    [
+                        19.038171,
+                        47.507688
+                    ],
+                    [
+                        19.038184,
+                        47.506759
+                    ],
+                    [
+                        19.038872,
+                        47.506613
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.038872,
+                        47.506613
+                    ],
+                    [
+                        19.039213,
+                        47.506798
+                    ],
+                    [
+                        19.039184,
+                        47.507763
+                    ],
+                    [
+                        19.03418,
+                        47.507767
+                    ],
+                    [
+                        19.034372,
+                        47.508268
+                    ],
+                    [
+                        19.034535,
+                        47.509871
+                    ],
+                    [
+                        19.034453,
+                        47.511114
+                    ],
+                    [
+                        19.03457,
+                        47.511119
+                    ],
+                    [
+                        19.034453,
+                        47.511114
+                    ],
+                    [
+                        19.034314,
+                        47.511761
+                    ],
+                    [
+                        19.032364,
+                        47.511203
+                    ],
+                    [
+                        19.03216,
+                        47.5114
+                    ],
+                    [
+                        19.030866,
+                        47.511623
+                    ],
+                    [
+                        19.030338,
+                        47.511876
+                    ],
+                    [
+                        19.029678,
+                        47.513417
+                    ],
+                    [
+                        19.02614,
+                        47.51422
+                    ],
+                    [
+                        19.024856,
+                        47.514266
+                    ],
+                    [
+                        19.023483,
+                        47.51507
+                    ],
+                    [
+                        19.023465,
+                        47.515365
+                    ],
+                    [
+                        19.024777,
+                        47.516473
+                    ],
+                    [
+                        19.023726,
+                        47.517131
+                    ],
+                    [
+                        19.02192,
+                        47.517521
+                    ],
+                    [
+                        19.020607,
+                        47.517557
+                    ],
+                    [
+                        19.021901,
+                        47.519561
+                    ],
+                    [
+                        19.022218,
+                        47.519787
+                    ],
+                    [
+                        19.020788,
+                        47.521522
+                    ],
+                    [
+                        19.017284,
+                        47.522866
+                    ],
+                    [
+                        19.016979,
+                        47.52315
+                    ],
+                    [
+                        19.016109,
+                        47.523238
+                    ],
+                    [
+                        19.009278,
+                        47.525622
+                    ],
+                    [
+                        19.008786,
+                        47.525947
+                    ],
+                    [
+                        19.00698,
+                        47.52809
+                    ],
+                    [
+                        19.004176,
+                        47.529028
+                    ],
+                    [
+                        19.003822,
+                        47.529305
+                    ],
+                    [
+                        19.003257,
+                        47.529297
+                    ],
+                    [
+                        18.99748,
+                        47.531198
+                    ],
+                    [
+                        18.994098,
+                        47.533024
+                    ],
+                    [
+                        18.993395,
+                        47.5337
+                    ],
+                    [
+                        18.993327,
+                        47.534063
+                    ],
+                    [
+                        18.993131,
+                        47.534072
+                    ],
+                    [
+                        18.993368,
+                        47.533628
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        18.993368,
+                        47.533628
+                    ],
+                    [
+                        18.99427,
+                        47.53291
+                    ],
+                    [
+                        18.998032,
+                        47.530905
+                    ],
+                    [
+                        19.002981,
+                        47.529395
+                    ],
+                    [
+                        19.0032,
+                        47.529173
+                    ],
+                    [
+                        19.003758,
+                        47.52917
+                    ],
+                    [
+                        19.00698,
+                        47.52809
+                    ],
+                    [
+                        19.008786,
+                        47.525947
+                    ],
+                    [
+                        19.00931,
+                        47.525522
+                    ],
+                    [
+                        19.016733,
+                        47.523072
+                    ],
+                    [
+                        19.020788,
+                        47.521522
+                    ],
+                    [
+                        19.021389,
+                        47.520855
+                    ],
+                    [
+                        19.021959,
+                        47.519832
+                    ],
+                    [
+                        19.02059,
+                        47.517593
+                    ],
+                    [
+                        19.020903,
+                        47.517394
+                    ],
+                    [
+                        19.021746,
+                        47.517537
+                    ],
+                    [
+                        19.023499,
+                        47.517189
+                    ],
+                    [
+                        19.024465,
+                        47.516534
+                    ],
+                    [
+                        19.024331,
+                        47.516116
+                    ],
+                    [
+                        19.023431,
+                        47.515311
+                    ],
+                    [
+                        19.023855,
+                        47.514715
+                    ],
+                    [
+                        19.025006,
+                        47.514147
+                    ],
+                    [
+                        19.026285,
+                        47.514141
+                    ],
+                    [
+                        19.029678,
+                        47.513417
+                    ],
+                    [
+                        19.030452,
+                        47.511764
+                    ],
+                    [
+                        19.032147,
+                        47.511283
+                    ],
+                    [
+                        19.032346,
+                        47.511076
+                    ],
+                    [
+                        19.034362,
+                        47.511719
+                    ],
+                    [
+                        19.034535,
+                        47.509871
+                    ],
+                    [
+                        19.03416,
+                        47.507702
+                    ],
+                    [
+                        19.038171,
+                        47.507688
+                    ],
+                    [
+                        19.038184,
+                        47.506759
+                    ],
+                    [
+                        19.038872,
+                        47.506613
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.038872,
+                    47.506613
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Batthyány tér M+H",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.034372,
+                    47.508268
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fazekas utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.03457,
+                    47.511119
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Horvát utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.032247,
+                    47.511344
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mechwart liget",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.027387,
+                    47.513933
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Füge utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.024294,
+                    47.514589
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Rét utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.024236,
+                    47.516864
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Ady Endre utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.021128,
+                    47.517511
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tapolcsányi utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.021914,
+                    47.520111
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Eszter utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.02048,
+                    47.521685
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vend utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.017452,
+                    47.522826
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pusztaszeri körönd",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.013255,
+                    47.524228
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Baba utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.009988,
+                    47.525387
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Móricz Zsigmond Gimnázium",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.007649,
+                    47.527437
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tömörkény utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.004288,
+                    47.529019
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Verecke lépcső",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.997248,
+                    47.531354
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vöröstorony lépcső",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.993368,
+                    47.533628
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Nagybányai út",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    18.998032,
+                    47.530905
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vöröstorony lépcső",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.003624,
+                    47.529117
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Verecke lépcső",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.007702,
+                    47.527185
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tömörkény utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.00931,
+                    47.525522
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Móricz Zsigmond Gimnázium",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.012936,
+                    47.524237
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Baba utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.017478,
+                    47.522682
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pusztaszeri körönd",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.021064,
+                    47.521082
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vend utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.021729,
+                    47.520084
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Eszter utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.020903,
+                    47.517394
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tapolcsányi utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.024196,
+                    47.516657
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Ady Endre utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.023855,
+                    47.514715
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Rét utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.02675,
+                    47.513942
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Füge utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.032074,
+                    47.511236
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mechwart liget",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.034451,
+                    47.510238
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Horvát utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.034133,
+                    47.507989
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fazekas utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.032364,
+                    47.511203
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.023726,
+                    47.517131
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.008786,
+                    47.525947
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "11",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        }
+    ]
+}

@@ -1,0 +1,592 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.05521,
+                        47.497462
+                    ],
+                    [
+                        19.058764,
+                        47.495768
+                    ],
+                    [
+                        19.059808,
+                        47.494543
+                    ],
+                    [
+                        19.061444,
+                        47.491529
+                    ],
+                    [
+                        19.061709,
+                        47.490411
+                    ],
+                    [
+                        19.061653,
+                        47.489852
+                    ],
+                    [
+                        19.060938,
+                        47.488923
+                    ],
+                    [
+                        19.052969,
+                        47.484724
+                    ],
+                    [
+                        19.052966,
+                        47.484507
+                    ],
+                    [
+                        19.053585,
+                        47.483862
+                    ],
+                    [
+                        19.053086,
+                        47.483337
+                    ],
+                    [
+                        19.052168,
+                        47.481063
+                    ],
+                    [
+                        19.051032,
+                        47.479548
+                    ],
+                    [
+                        19.049768,
+                        47.478742
+                    ],
+                    [
+                        19.047984,
+                        47.477989
+                    ],
+                    [
+                        19.034219,
+                        47.473122
+                    ],
+                    [
+                        19.022617,
+                        47.468076
+                    ],
+                    [
+                        19.022253,
+                        47.467711
+                    ],
+                    [
+                        19.021871,
+                        47.465755
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "49",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.021871,
+                        47.465755
+                    ],
+                    [
+                        19.022306,
+                        47.467712
+                    ],
+                    [
+                        19.022637,
+                        47.468049
+                    ],
+                    [
+                        19.034342,
+                        47.473138
+                    ],
+                    [
+                        19.045529,
+                        47.477141
+                    ],
+                    [
+                        19.046864,
+                        47.477491
+                    ],
+                    [
+                        19.049814,
+                        47.478728
+                    ],
+                    [
+                        19.050961,
+                        47.479433
+                    ],
+                    [
+                        19.051932,
+                        47.480522
+                    ],
+                    [
+                        19.053045,
+                        47.483136
+                    ],
+                    [
+                        19.053693,
+                        47.483875
+                    ],
+                    [
+                        19.053021,
+                        47.484554
+                    ],
+                    [
+                        19.053046,
+                        47.484738
+                    ],
+                    [
+                        19.061155,
+                        47.489031
+                    ],
+                    [
+                        19.061697,
+                        47.489731
+                    ],
+                    [
+                        19.061792,
+                        47.490259
+                    ],
+                    [
+                        19.061498,
+                        47.491536
+                    ],
+                    [
+                        19.060146,
+                        47.494145
+                    ],
+                    [
+                        19.058752,
+                        47.495897
+                    ],
+                    [
+                        19.055158,
+                        47.497413
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "49",
+                "color": "#FFD800",
+                "z_index": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.055158,
+                    47.497413
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Deák Ferenc tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.059696,
+                    47.494561
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Astoria M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.061248,
+                    47.489219
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kálvin tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.05724,
+                    47.486916
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fővám tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.053086,
+                    47.483337
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Szent Gellért tér - Műegyetem M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.051428,
+                    47.479991
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Gárdonyi tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046161,
+                    47.477374
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Móricz Zsigmond körtér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.039382,
+                    47.47499
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kosztolányi Dezső tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.033201,
+                    47.472696
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Karolina út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.028585,
+                    47.470698
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Csóka utca (Karinthy Színház)",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.023744,
+                    47.468566
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Szent Gellért-templom",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.021871,
+                    47.465755
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kelenföld vasútállomás M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.024102,
+                    47.46862
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Szent Gellért-templom",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.029195,
+                    47.470851
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Csóka utca (Karinthy Színház)",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.033676,
+                    47.472838
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Karolina út",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.040191,
+                    47.475179
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kosztolányi Dezső tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.046864,
+                    47.477491
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Móricz Zsigmond körtér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.051932,
+                    47.480522
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Gárdonyi tér",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.053537,
+                    47.483616
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Szent Gellért tér - Műegyetem M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.05781,
+                    47.487186
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fővám tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.061486,
+                    47.489461
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kálvin tér M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.060146,
+                    47.494145
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Astoria M",
+                "z_index": 3.1,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.061709,
+                    47.490411
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "49",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.053585,
+                    47.483862
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "49",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.047984,
+                    47.477989
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "49",
+                "color": "#FFD800",
+                "z_index": 3.5,
+                "priorityLevel": 3
+            }
+        }
+    ]
+}

@@ -1,0 +1,924 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.090585,
+                        47.519989
+                    ],
+                    [
+                        19.091375,
+                        47.520351
+                    ],
+                    [
+                        19.09154,
+                        47.520245
+                    ],
+                    [
+                        19.093182,
+                        47.52128
+                    ],
+                    [
+                        19.0927,
+                        47.521623
+                    ],
+                    [
+                        19.096002,
+                        47.52404
+                    ],
+                    [
+                        19.096532,
+                        47.524088
+                    ],
+                    [
+                        19.098038,
+                        47.523699
+                    ],
+                    [
+                        19.100628,
+                        47.526722
+                    ],
+                    [
+                        19.106335,
+                        47.534036
+                    ],
+                    [
+                        19.108227,
+                        47.53356
+                    ],
+                    [
+                        19.120763,
+                        47.527089
+                    ],
+                    [
+                        19.125101,
+                        47.525053
+                    ],
+                    [
+                        19.12166,
+                        47.522085
+                    ],
+                    [
+                        19.127345,
+                        47.519214
+                    ],
+                    [
+                        19.127308,
+                        47.519116
+                    ],
+                    [
+                        19.127398,
+                        47.519179
+                    ],
+                    [
+                        19.143536,
+                        47.509303
+                    ],
+                    [
+                        19.139121,
+                        47.506308
+                    ],
+                    [
+                        19.136673,
+                        47.505896
+                    ],
+                    [
+                        19.136268,
+                        47.505315
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "81",
+                "color": "#E41F18",
+                "z_index": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.136353,
+                        47.505123
+                    ],
+                    [
+                        19.136736,
+                        47.503995
+                    ],
+                    [
+                        19.136999,
+                        47.503949
+                    ],
+                    [
+                        19.137078,
+                        47.50409
+                    ],
+                    [
+                        19.136673,
+                        47.505243
+                    ],
+                    [
+                        19.136647,
+                        47.505732
+                    ],
+                    [
+                        19.136804,
+                        47.505888
+                    ],
+                    [
+                        19.13919,
+                        47.506188
+                    ],
+                    [
+                        19.140723,
+                        47.507108
+                    ],
+                    [
+                        19.143846,
+                        47.509391
+                    ],
+                    [
+                        19.136428,
+                        47.513922
+                    ],
+                    [
+                        19.135195,
+                        47.514387
+                    ],
+                    [
+                        19.127215,
+                        47.519395
+                    ],
+                    [
+                        19.12166,
+                        47.522085
+                    ],
+                    [
+                        19.125101,
+                        47.525053
+                    ],
+                    [
+                        19.121332,
+                        47.526822
+                    ],
+                    [
+                        19.108227,
+                        47.53356
+                    ],
+                    [
+                        19.106335,
+                        47.534036
+                    ],
+                    [
+                        19.106029,
+                        47.533744
+                    ],
+                    [
+                        19.100929,
+                        47.527189
+                    ],
+                    [
+                        19.098116,
+                        47.524016
+                    ],
+                    [
+                        19.098038,
+                        47.523699
+                    ],
+                    [
+                        19.095114,
+                        47.524417
+                    ],
+                    [
+                        19.09579,
+                        47.525581
+                    ],
+                    [
+                        19.096687,
+                        47.526137
+                    ],
+                    [
+                        19.09622,
+                        47.526625
+                    ],
+                    [
+                        19.09568,
+                        47.526788
+                    ],
+                    [
+                        19.092906,
+                        47.52249
+                    ],
+                    [
+                        19.092006,
+                        47.521761
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "81",
+                "color": "#E41F18",
+                "z_index": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.090585,
+                    47.519989
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mexikói út M",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.098475,
+                    47.524142
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kassai tér",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.100628,
+                    47.526722
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Nezsider park",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.103062,
+                    47.52977
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pándorfalu utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.105788,
+                    47.533231
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Sárrét park",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.111034,
+                    47.53206
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Erzsébet királyné útja",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.114543,
+                    47.530267
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Kerékgyártó utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.118432,
+                    47.528286
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Huszt utcai lakótelep",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.120763,
+                    47.527089
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Csömöri út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.124514,
+                    47.524595
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Szugló utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.122667,
+                    47.521529
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Komócsy utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.127308,
+                    47.519116
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Egressy út / Vezér utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.129947,
+                    47.517513
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mogyoródi út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.13307,
+                    47.515633
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Gödöllői utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.137202,
+                    47.513092
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fogarasi út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.139669,
+                    47.511588
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tihamér utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.14309,
+                    47.509498
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Füredi utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.140578,
+                    47.507333
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Álmos vezér útja",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.136268,
+                    47.505315
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Örs vezér tere M+H",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.136353,
+                    47.505123
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Örs vezér tere M+H",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.140723,
+                    47.507108
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Álmos vezér útja",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.143197,
+                    47.509822
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Vezér utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.139829,
+                    47.511875
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tihamér utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.13711,
+                    47.513523
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Fogarasi út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.133728,
+                    47.515352
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Gödöllői utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.130359,
+                    47.517405
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mogyoródi út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.127215,
+                    47.519395
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Egressy út / Vezér utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.123318,
+                    47.521304
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Komócsy utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.124833,
+                    47.524739
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Szugló utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.121771,
+                    47.526684
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Csömöri út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.119223,
+                    47.52798
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Huszt utcai lakótelep",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.115168,
+                    47.530043
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Kerékgyártó utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.111035,
+                    47.532177
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Miskolci utca / Erzsébet királyné útja",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.106029,
+                    47.533744
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Sárrét park",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.102706,
+                    47.529512
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Pándorfalu utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.101107,
+                    47.527477
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Nezsider park",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.098116,
+                    47.524016
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kassai tér",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.09622,
+                    47.526625
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Szőnyi út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.093761,
+                    47.523865
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Teleki Blanka utca",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.092006,
+                    47.521761
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Mexikói út",
+                "z_index": 2.1,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.096002,
+                    47.52404
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "81",
+                "color": "#E41F18",
+                "z_index": 2.5,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.108227,
+                    47.53356
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "81",
+                "color": "#E41F18",
+                "z_index": 2.5,
+                "priorityLevel": 2
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.127308,
+                    47.519116
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "81",
+                "color": "#E41F18",
+                "z_index": 2.5,
+                "priorityLevel": 2
+            }
+        }
+    ]
+}

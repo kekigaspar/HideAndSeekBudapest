@@ -1,0 +1,508 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.082647,
+                        47.559673
+                    ],
+                    [
+                        19.082686,
+                        47.55941
+                    ],
+                    [
+                        19.081263,
+                        47.557947
+                    ],
+                    [
+                        19.08447,
+                        47.556534
+                    ],
+                    [
+                        19.084395,
+                        47.556453
+                    ],
+                    [
+                        19.08447,
+                        47.556534
+                    ],
+                    [
+                        19.086637,
+                        47.555713
+                    ],
+                    [
+                        19.095169,
+                        47.55519
+                    ],
+                    [
+                        19.100839,
+                        47.555114
+                    ],
+                    [
+                        19.100842,
+                        47.554999
+                    ],
+                    [
+                        19.100839,
+                        47.555114
+                    ],
+                    [
+                        19.101781,
+                        47.555115
+                    ],
+                    [
+                        19.104497,
+                        47.554566
+                    ],
+                    [
+                        19.107736,
+                        47.562241
+                    ],
+                    [
+                        19.110284,
+                        47.562433
+                    ],
+                    [
+                        19.110361,
+                        47.562761
+                    ],
+                    [
+                        19.1097,
+                        47.563422
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "121",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        19.110338,
+                        47.563269
+                    ],
+                    [
+                        19.110129,
+                        47.562982
+                    ],
+                    [
+                        19.107631,
+                        47.562437
+                    ],
+                    [
+                        19.106041,
+                        47.562633
+                    ],
+                    [
+                        19.105878,
+                        47.561988
+                    ],
+                    [
+                        19.106799,
+                        47.56222
+                    ],
+                    [
+                        19.106869,
+                        47.562093
+                    ],
+                    [
+                        19.106799,
+                        47.56222
+                    ],
+                    [
+                        19.107415,
+                        47.562374
+                    ],
+                    [
+                        19.107687,
+                        47.56241
+                    ],
+                    [
+                        19.107744,
+                        47.562262
+                    ],
+                    [
+                        19.104497,
+                        47.554566
+                    ],
+                    [
+                        19.101917,
+                        47.55516
+                    ],
+                    [
+                        19.098769,
+                        47.555161
+                    ],
+                    [
+                        19.086236,
+                        47.555839
+                    ],
+                    [
+                        19.084042,
+                        47.556739
+                    ],
+                    [
+                        19.085426,
+                        47.558262
+                    ],
+                    [
+                        19.082686,
+                        47.55941
+                    ],
+                    [
+                        19.082622,
+                        47.559956
+                    ],
+                    [
+                        19.082647,
+                        47.559673
+                    ],
+                    [
+                        19.082511,
+                        47.559667
+                    ]
+                ]
+            },
+            "properties": {
+                "type": "path",
+                "line_name": "121",
+                "color": "#009EE3",
+                "z_index": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.082511,
+                    47.559667
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Újpest-városkapu M (Temesvári utca)",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.084395,
+                    47.556453
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Aradi utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.090254,
+                    47.555408
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tél utca / Pozsonyi utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.095169,
+                    47.55519
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Nap utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.100842,
+                    47.554999
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Újpesti Erőmű",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.104243,
+                    47.554539
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Elem utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.105737,
+                    47.557286
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Ősz utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.108598,
+                    47.56231
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Víztorony",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.1097,
+                    47.563422
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kiss János utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.110338,
+                    47.563269
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Kiss János utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.106869,
+                    47.562093
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Víztorony",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.105881,
+                    47.557929
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Ősz utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.104615,
+                    47.554961
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Elem utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.09966,
+                    47.555171
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Újpesti Erőmű",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.094811,
+                    47.555379
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Nap utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.090294,
+                    47.555615
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Tél utca / Pozsonyi utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.085313,
+                    47.558
+                ]
+            },
+            "properties": {
+                "type": "stop",
+                "name": "Csányi László utca",
+                "z_index": 1.1,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.084395,
+                    47.556453
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "121",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.100839,
+                    47.555114
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "121",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    19.104497,
+                    47.554566
+                ]
+            },
+            "properties": {
+                "type": "label",
+                "line_name": "121",
+                "color": "#009EE3",
+                "z_index": 1.5,
+                "priorityLevel": 1
+            }
+        }
+    ]
+}
