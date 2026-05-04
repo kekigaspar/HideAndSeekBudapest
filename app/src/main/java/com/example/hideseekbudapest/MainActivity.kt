@@ -1,270 +1,133 @@
 package com.example.hideseekbudapest
 
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import org.json.JSONObject
+import android.content.Context
 import android.graphics.Color
-import androidx.core.graphics.toColorInt
-import com.google.maps.android.ui.IconGenerator
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import android.graphics.Canvas
-import android.graphics.drawable.GradientDrawable
-import androidx.core.graphics.createBitmap
-import com.google.android.gms.maps.model.MapStyleOptions
-import com.google.android.gms.maps.model.BitmapDescriptor
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import kotlinx.coroutines.launch
-import androidx.lifecycle.lifecycleScope
-import com.google.maps.android.data.geojson.GeoJsonLayer
-import com.google.maps.android.data.geojson.GeoJsonLineStringStyle
-import com.google.maps.android.data.geojson.GeoJsonPointStyle
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import org.maplibre.android.MapLibre
+import org.maplibre.android.camera.CameraPosition
+import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.MapView
+import org.maplibre.android.maps.Style
+import org.maplibre.android.style.expressions.Expression.get
+import org.maplibre.android.style.layers.CircleLayer
+import org.maplibre.android.style.layers.LineLayer
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.sources.VectorSource
+import java.io.File
+import java.io.FileOutputStream
 
 class MainActivity : AppCompatActivity() {
+    private fun debugMBTilesMetadata(dbFile: File) {
+        try {
+            val database = android.database.sqlite.SQLiteDatabase.openDatabase(
+                dbFile.absolutePath,
+                null,
+                android.database.sqlite.SQLiteDatabase.OPEN_READONLY
+            )
+            val cursor = database.rawQuery("SELECT name, value FROM metadata", null)
 
-    private lateinit var googleMap: GoogleMap
-
-    private var currentZoomTier: Int = -1
-
-    private val transitLayers = mutableListOf<GeoJsonLayer>()
-
-    private val stopIcon: BitmapDescriptor by lazy {
-        val dotDrawable = GradientDrawable().apply {
-            shape = GradientDrawable.OVAL
-            setColor(Color.WHITE)
-            setStroke(3, Color.BLACK)
-            setSize(24, 24)
-        }
-        val bitmap = createBitmap(24, 24)
-        val canvas = Canvas(bitmap)
-        dotDrawable.setBounds(0, 0, canvas.width, canvas.height)
-        dotDrawable.draw(canvas)
-        BitmapDescriptorFactory.fromBitmap(bitmap)
-    }
-
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            enableUserLocation()
-        }
-    }
-
-    private fun getZoomTier(zoom: Float): Int {
-        return when {
-            zoom >= 15.0f -> 5 // Stops and everything else
-            zoom >= 14.0f -> 4 // Buses
-            zoom >= 13.5f -> 3 // Trolleys
-            zoom >= 13.0f -> 2 // Trams
-            zoom >= 12.5f -> 1 // HEVs
-            else -> 0          // Metros only
-        }
-    }
-
-    private fun loadAllTransitLines() {
-        lifecycleScope.launch(Dispatchers.IO) {
-            try {
-                // Assuming you put the new files in assets/geojson
-                val lineFiles = assets.list("lines")
-                if (lineFiles != null) {
-                    for (fileName in lineFiles) {
-                        val jsonString = assets.open("lines/$fileName").bufferedReader().use { it.readText() }
-                        val jsonObject = JSONObject(jsonString)
-
-                        withContext(Dispatchers.Main) {
-                            drawGeoJsonLayer(jsonObject)
-                        }
-                    }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
+            if (cursor.moveToFirst()) {
+                do {
+                    val name = cursor.getString(0)
+                    val value = cursor.getString(1)
+                    android.util.Log.d("MBTILES_DEBUG", "Row -> $name: $value")
+                } while (cursor.moveToNext())
             }
+            cursor.close()
+            database.close()
+        } catch (e: Exception) {
+            android.util.Log.e("MBTILES_DEBUG", "Failed to read database", e)
         }
     }
 
-    private fun drawGeoJsonLayer(geoJsonObject: JSONObject) {
-        val layer = GeoJsonLayer(googleMap, geoJsonObject)
-
-        // Cache your IconGenerators to save memory if multiple labels share a line
-        val labelIcons = mutableMapOf<String, BitmapDescriptor>()
-
-        for (feature in layer.features) {
-            val type = feature.getProperty("type")
-            val zIndex = feature.getProperty("z_index").toDouble().toFloat()
-
-            when (type) {
-                "path" -> {
-                    val colorHex = feature.getProperty("color")
-                    val lineStyle = GeoJsonLineStringStyle()
-                    lineStyle.color = colorHex.toColorInt()
-                    lineStyle.width = 12f
-                    lineStyle.zIndex = zIndex
-                    feature.lineStringStyle = lineStyle
-                }
-                "label" -> {
-                    val lineName = feature.getProperty("line_name")
-                    val colorHex = feature.getProperty("color")
-
-                    // Renamed to 'labelBitmap' to avoid the naming collision
-                    val labelBitmap = labelIcons.getOrPut(lineName) {
-                        val iconGenerator = IconGenerator(this@MainActivity)
-                        val ovalBackground = GradientDrawable().apply {
-                            shape = GradientDrawable.RECTANGLE
-                            cornerRadius = 50f
-                            setColor(colorHex.toColorInt())
-                            setStroke(4, Color.WHITE)
-                        }
-                        iconGenerator.setBackground(ovalBackground)
-                        iconGenerator.setTextAppearance(android.R.style.TextAppearance_DeviceDefault_Inverse)
-                        BitmapDescriptorFactory.fromBitmap(iconGenerator.makeIcon(lineName))
-                    }
-
-                    val pointStyle = GeoJsonPointStyle()
-                    pointStyle.setIcon(labelBitmap) // Use the explicit setter
-                    pointStyle.setZIndex(zIndex)
-
-                    feature.pointStyle = pointStyle
-                }
-                "stop" -> {
-                    val pointStyle = GeoJsonPointStyle()
-                    pointStyle.setIcon(stopIcon) // Use the explicit setter
-                    pointStyle.setZIndex(zIndex)
-                    pointStyle.setAnchor(0.5f, 0.5f) // Use the explicit dual-parameter setter
-                    pointStyle.setVisible(false) // Default to hidden
-
-                    feature.pointStyle = pointStyle
-                }
-            }
-        }
-
-        layer.addLayerToMap()
-        transitLayers.add(layer)
-    }
-
-    private fun updateMapVisibility(zoom: Float) {
-        // 1. Calculate the new tier
-        val newTier = getZoomTier(zoom)
-
-        // 2. The Magic: If we haven't crossed a threshold, STOP HERE.
-        if (newTier == currentZoomTier) return
-
-        // Update the tracker
-        currentZoomTier = newTier
-
-        // 3. Define the boolean flags based on the exact zoom level
-        val showStops = zoom >= 15.0f
-        val showBusLabels = zoom >= 14.0f
-        val showTrolleyLabels = zoom >= 13.5f
-        val showTramLabels = zoom >= 13.0f
-        val showHevLabels = zoom >= 12.5f
-
-        // 4. Run the expensive loop ONLY when necessary
-        for (layer in transitLayers) {
-            for (feature in layer.features) {
-                val type = feature.getProperty("type")
-                if (type == "path") continue
-
-                val priorityStr = feature.getProperty("priorityLevel")
-                val priorityLevel = priorityStr?.toDoubleOrNull()?.toInt() ?: 1
-
-                val shouldBeVisible = if (type == "stop") {
-                    showStops
-                } else {
-                    when (priorityLevel) {
-                        4 -> true               // Metros
-                        5 -> showHevLabels      // HEVs
-                        3 -> showTramLabels     // Trams
-                        2 -> showTrolleyLabels  // Trolleys
-                        1 -> showBusLabels      // Buses
-                        else -> true
-                    }
-                }
-
-                val currentStyle = feature.pointStyle
-                if (currentStyle.isVisible != shouldBeVisible) {
-                    currentStyle.setVisible(shouldBeVisible)
-                    feature.pointStyle = currentStyle
-                }
-            }
-        }
-    }
+    private lateinit var mapView: MapView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // MapLibre MUST be initialized before setting the content view
+        MapLibre.getInstance(this)
         setContentView(R.layout.activity_main)
 
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map_fragment) as SupportMapFragment
+        mapView = findViewById(R.id.mapView)
+        mapView.onCreate(savedInstanceState)
 
-        mapFragment.getMapAsync { map ->
-            googleMap = map
+        // 1. Ensure the MBTiles file is copied from assets to internal storage
+        val dbFile = copyDatabaseFromAssets(this, "budapest_vector.mbtiles")
+        debugMBTilesMetadata(dbFile)
 
-            // 1. Clean the UI
-            googleMap.isBuildingsEnabled = false
-            googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style))
+        // 2. Load the map
+        mapView.getMapAsync { map ->
 
-            googleMap.setMinZoomPreference(11.25f)
+            // Set initial camera position to Budapest
+            map.cameraPosition = CameraPosition.Builder()
+                .target(LatLng(47.4979, 19.0402))
+                .zoom(12.0)
+                .build()
 
-            // Lock the maximum zoom IN (optional, prevents zooming into blank gray pixels)
-            googleMap.setMaxZoomPreference(18.0f)
+            // Inside your setStyle block
+            map.setStyle(Style.Builder().fromUri("asset://awsStyle.json")) { style ->
+                val sourceId = "transit-source"
+                val dbFile = copyDatabaseFromAssets(this, "budapest_vector.mbtiles")
 
-            // 1. Calculate a safe distance to push the buttons down (e.g., 60dp converted to pixels)
-            val topPadding = (60 * resources.displayMetrics.density).toInt()
+                style.addSource(VectorSource(sourceId, "mbtiles://${dbFile.absolutePath}"))
 
-            // 2. Apply padding: left, top, right, bottom
-            googleMap.setPadding(0, topPadding, 0, 0)
+                // 1. THE LINE BRUSH: Automatically picks only the LineStrings from the layer
+                val lineLayer = LineLayer("line-layer", sourceId).apply {
+                    sourceLayer = "transit_data" // The name from your Tippecanoe command
+                    setProperties(
+                        lineWidth(4f),
+                        lineCap("butt"), // Keeps edges flush to prevent the disappearing line bug
+                        lineJoin("miter"),
+                        lineColor(get("color")) // Uses the color property from your GeoJSON
+                    )
+                }
+                style.addLayer(lineLayer)
 
-            // 2. Lock the map to Budapest and set the starting zoom
-            val budapestBounds = LatLngBounds(
-                LatLng(47.4200, 18.9500), // Southwest corner (Kelenföld / Buda Hills edge)
-                LatLng(47.5700, 19.1700)  // Northeast corner (Újpest / Örs vezér tere edge)
-            )
-            googleMap.setLatLngBoundsForCameraTarget(budapestBounds)
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(budapestBounds.center, 12f))
-
-            // 3. Turn on the User Location Blue Dot
-            // (Make sure your permission request logic still fires before or around this!)
-            checkLocationPermission()
-
-            // 4. Load the transit data
-            loadAllTransitLines()
-
-            // 5. Instantly clean the map based on the starting zoom level
-            updateMapVisibility(googleMap.cameraPosition.zoom)
-
-            // 6. Keep it clean when the user zooms in and out
-            googleMap.setOnCameraIdleListener {
-                updateMapVisibility(googleMap.cameraPosition.zoom)
+                // 2. THE CIRCLE BRUSH: Automatically picks only the Points from the same layer
+                val stopLayer = CircleLayer("stop-layer", sourceId).apply {
+                    sourceLayer = "transit_data" // Same sourceLayer as above!
+                    setProperties(
+                        circleRadius(3f),
+                        circleColor(Color.WHITE),
+                        circleStrokeWidth(1.5f),
+                        circleStrokeColor(Color.BLACK)
+                    )
+                    // Optimization: Don't draw the dots until the user zooms in closer
+                    setFilter(org.maplibre.android.style.expressions.Expression.gt(
+                        org.maplibre.android.style.expressions.Expression.zoom(),
+                        org.maplibre.android.style.expressions.Expression.literal(13.5)
+                    ))
+                }
+                style.addLayer(stopLayer)
             }
         }
     }
 
-    private fun checkLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            enableUserLocation()
-        } else {
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+    private fun copyDatabaseFromAssets(context: Context, dbName: String): File {
+        val dbPath = context.getDatabasePath(dbName)
+        if (!dbPath.exists()) {
+            dbPath.parentFile?.mkdirs()
+            context.assets.open(dbName).use { inputStream ->
+                FileOutputStream(dbPath).use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
         }
+        return dbPath
     }
 
-    private fun enableUserLocation() {
-        try {
-            googleMap.isMyLocationEnabled = true
-        } catch (e: SecurityException) {
-            e.printStackTrace()
-        }
+    // MapLibre requires lifecycle management to prevent memory leaks
+    override fun onStart() { super.onStart(); mapView.onStart() }
+    override fun onResume() { super.onResume(); mapView.onResume() }
+    override fun onPause() { super.onPause(); mapView.onPause() }
+    override fun onStop() { super.onStop(); mapView.onStop() }
+    override fun onLowMemory() { super.onLowMemory(); mapView.onLowMemory() }
+    override fun onDestroy() { super.onDestroy(); mapView.onDestroy() }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapView.onSaveInstanceState(outState)
     }
 }
