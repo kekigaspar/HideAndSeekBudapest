@@ -45,4 +45,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.android.sdk)
+    implementation(libs.mapbox.sdk.turf)
+    implementation(libs.mapbox.sdk.geojson)
 }

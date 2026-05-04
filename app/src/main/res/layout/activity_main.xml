@@ -4,9 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Your MapView sits in the background[cite: 2] -->
     <org.maplibre.android.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <!-- A scrolling container for your tool buttons overlay -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#99000000"
+        android:padding="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCircleInside"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Circle (In)" />
+
+            <Button
+                android:id="@+id/btnCircleOutside"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Circle (Out)" />
+
+            <Button
+                android:id="@+id/btnLineRight"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Line (Right)" />
+
+            <Button
+                android:id="@+id/btnLineLeft"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Line (Left)" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </FrameLayout>

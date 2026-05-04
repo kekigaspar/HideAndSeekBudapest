@@ -3,115 +3,143 @@ package com.example.hideseekbudapest
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.example.hideseekbudapest.tools.* // Make sure this matches where you put MapTool.kt
+import com.mapbox.geojson.Feature
+import com.mapbox.geojson.FeatureCollection
+import com.mapbox.geojson.Point
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.expressions.Expression.get
+import org.maplibre.android.style.expressions.Expression.gt
+import org.maplibre.android.style.expressions.Expression.literal
+import org.maplibre.android.style.expressions.Expression.zoom
 import org.maplibre.android.style.layers.CircleLayer
+import org.maplibre.android.style.layers.FillLayer
 import org.maplibre.android.style.layers.LineLayer
-import org.maplibre.android.style.layers.PropertyFactory.circleColor
-import org.maplibre.android.style.layers.PropertyFactory.circleRadius
-import org.maplibre.android.style.layers.PropertyFactory.circleStrokeColor
-import org.maplibre.android.style.layers.PropertyFactory.circleStrokeWidth
-import org.maplibre.android.style.layers.PropertyFactory.lineCap
-import org.maplibre.android.style.layers.PropertyFactory.lineColor
-import org.maplibre.android.style.layers.PropertyFactory.lineJoin
-import org.maplibre.android.style.layers.PropertyFactory.lineWidth
+import org.maplibre.android.style.layers.PropertyFactory.*
+import org.maplibre.android.style.sources.GeoJsonSource
 import org.maplibre.android.style.sources.VectorSource
 import java.io.File
 import java.io.FileOutputStream
+import androidx.core.graphics.toColorInt
 
 class MainActivity : AppCompatActivity() {
-    private fun debugMBTilesMetadata(dbFile: File) {
-        try {
-            val database = android.database.sqlite.SQLiteDatabase.openDatabase(
-                dbFile.absolutePath,
-                null,
-                android.database.sqlite.SQLiteDatabase.OPEN_READONLY
-            )
-            val cursor = database.rawQuery("SELECT name, value FROM metadata", null)
-
-            if (cursor.moveToFirst()) {
-                do {
-                    val name = cursor.getString(0)
-                    val value = cursor.getString(1)
-                    android.util.Log.d("MBTILES_DEBUG", "Row -> $name: $value")
-                } while (cursor.moveToNext())
-            }
-            cursor.close()
-            database.close()
-        } catch (e: Exception) {
-            android.util.Log.e("MBTILES_DEBUG", "Failed to read database", e)
-        }
-    }
-
     private lateinit var mapView: MapView
+    private var activeTool: MapTool? = null
+    private val allExclusions = mutableListOf<Feature>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // MapLibre MUST be initialized before setting the content view
+        // MapLibre MUST be initialized before setting the content view[cite: 1]
         MapLibre.getInstance(this)
         setContentView(R.layout.activity_main)
+
+        findViewById<Button>(R.id.btnCircleInside).setOnClickListener {
+            setTool(CircleTool(isInside = true))
+        }
+        findViewById<Button>(R.id.btnCircleOutside).setOnClickListener {
+            setTool(CircleTool(isInside = false))
+        }
 
         mapView = findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
 
-        // 1. Ensure the MBTiles file is copied from assets to internal storage
         val dbFile = copyDatabaseFromAssets(this, "budapest_vector.mbtiles")
-        debugMBTilesMetadata(dbFile)
 
-        // 2. Load the map
         mapView.getMapAsync { map ->
-
-            // Set initial camera position to Budapest
             map.cameraPosition = CameraPosition.Builder()
                 .target(LatLng(47.4979, 19.0402))
                 .zoom(12.0)
                 .build()
 
-            // Inside your setStyle block
             map.setStyle(Style.Builder().fromUri("asset://awsStyle.json")) { style ->
                 val sourceId = "transit-source"
-                val dbFile = copyDatabaseFromAssets(this, "budapest_vector.mbtiles")
 
                 style.addSource(VectorSource(sourceId, "mbtiles://${dbFile.absolutePath}"))
 
-                // 1. THE LINE BRUSH: Automatically picks only the LineStrings from the layer
                 val lineLayer = LineLayer("line-layer", sourceId).apply {
-                    sourceLayer = "transit_data" // The name from your Tippecanoe command
+                    sourceLayer = "transit_data"
                     setProperties(
                         lineWidth(4f),
-                        lineCap("butt"), // Keeps edges flush to prevent the disappearing line bug
+                        lineCap("butt"),
                         lineJoin("miter"),
-                        lineColor(get("color")) // Uses the color property from your GeoJSON
+                        lineColor(get("color"))
                     )
                 }
                 style.addLayer(lineLayer)
 
-                // 2. THE CIRCLE BRUSH: Automatically picks only the Points from the same layer
                 val stopLayer = CircleLayer("stop-layer", sourceId).apply {
-                    sourceLayer = "transit_data" // Same sourceLayer as above!
+                    sourceLayer = "transit_data"
                     setProperties(
                         circleRadius(3f),
                         circleColor(Color.WHITE),
                         circleStrokeWidth(1.5f),
                         circleStrokeColor(Color.BLACK)
                     )
-                    // Optimization: Don't draw the dots until the user zooms in closer
-                    setFilter(org.maplibre.android.style.expressions.Expression.gt(
-                        org.maplibre.android.style.expressions.Expression.zoom(),
-                        org.maplibre.android.style.expressions.Expression.literal(13.5)
-                    ))
+                    setFilter(gt(zoom(), literal(13.5)))
                 }
                 style.addLayer(stopLayer)
+
+                style.addSource(GeoJsonSource("exclusion-source"))
+                style.addLayer(FillLayer("exclusion-layer", "exclusion-source").withProperties(
+                    fillColor("#FF0000".toColorInt()), // Red shading
+                    fillOpacity(0.3f) // Semi-transparent so you can still see the map
+                ))
+
+                style.addSource(GeoJsonSource("pin-source"))
+                style.addLayer(CircleLayer("pin-layer", "pin-source").withProperties(
+                    circleRadius(6f),
+                    circleColor(Color.YELLOW),
+                    circleStrokeWidth(2f),
+                    circleStrokeColor(Color.BLACK)
+                ))
+
+                map.addOnMapClickListener { latLng ->
+                    val tool = activeTool ?: return@addOnMapClickListener false
+
+                    val clickedPoint = Point.fromLngLat(latLng.longitude, latLng.latitude)
+
+                    // Pass the click down to whatever tool is currently active
+                    val generatedFeature = tool.processClick(clickedPoint)
+
+                    // Update the UI to show the temporary yellow pins
+                    val pinCollection = FeatureCollection.fromFeatures(tool.getTempPins().map { Feature.fromGeometry(it) })
+                    style.getSourceAs<GeoJsonSource>("pin-source")?.setGeoJson(pinCollection.toJson())
+
+                    // If the tool is finished (e.g., tapped twice), it will return the Polygon
+                    if (generatedFeature != null) {
+                        allExclusions.add(generatedFeature)
+
+                        // Update the red exclusion layer
+                        val exclusionCollection = FeatureCollection.fromFeatures(allExclusions)
+                        style.getSourceAs<GeoJsonSource>("exclusion-source")?.setGeoJson(exclusionCollection.toJson())
+
+                        // Clear the tool and reset the map to normal dragging
+                        setTool(null)
+                    }
+                    true // We handled the click, don't pass it to anything else
+                }
             }
         }
     }
 
+    // --- HELPER TO SWITCH TOOLS SAFELY ---
+    fun setTool(tool: MapTool?) {
+        activeTool?.reset() // clear pins from the old tool if the user cancelled midway
+        activeTool = tool
+
+        // Clear the yellow pins from the map UI visually
+        mapView.getMapAsync { map ->
+            val emptyCollection = FeatureCollection.fromFeatures(emptyList())
+            map.style?.getSourceAs<GeoJsonSource>("pin-source")?.setGeoJson(emptyCollection.toJson())
+        }
+    }
     private fun copyDatabaseFromAssets(context: Context, dbName: String): File {
         val dbPath = context.getDatabasePath(dbName)
         if (!dbPath.exists()) {
@@ -125,7 +153,7 @@ class MainActivity : AppCompatActivity() {
         return dbPath
     }
 
-    // MapLibre requires lifecycle management to prevent memory leaks
+    // MapLibre requires lifecycle management to prevent memory leaks[cite: 1]
     override fun onStart() { super.onStart(); mapView.onStart() }
     override fun onResume() { super.onResume(); mapView.onResume() }
     override fun onPause() { super.onPause(); mapView.onPause() }
