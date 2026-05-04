@@ -1,6 +1,5 @@
 [versions]
 agp = "9.2.0"
-androidMapsUtils = "4.2.0"
 androidSdk = "13.1.0"
 coreKtx = "1.18.0"
 junit = "4.13.2"
@@ -11,10 +10,8 @@ material = "1.13.0"
 activityKtx = "1.13.0"
 constraintlayout = "2.2.1"
 playServicesLocation = "21.3.0"
-playServicesMaps = "20.0.0"
 
 [libraries]
-android-maps-utils = { module = "com.google.maps.android:android-maps-utils", version.ref = "androidMapsUtils" }
 android-sdk = { module = "org.maplibre.gl:android-sdk", version.ref = "androidSdk" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,7 +22,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
-play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
