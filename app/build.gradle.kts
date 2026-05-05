@@ -47,4 +47,5 @@ dependencies {
     implementation(libs.android.sdk)
     implementation(libs.mapbox.sdk.turf)
     implementation(libs.mapbox.sdk.geojson)
+    implementation(libs.jts.core)
 }

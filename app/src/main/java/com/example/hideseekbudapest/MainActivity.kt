@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.hideseekbudapest.tools.* // Make sure this matches where you put MapTool.kt
+import com.example.hideseekbudapest.tools.*
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
@@ -27,6 +27,10 @@ import org.maplibre.android.style.sources.VectorSource
 import java.io.File
 import java.io.FileOutputStream
 import androidx.core.graphics.toColorInt
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import androidx.core.graphics.createBitmap
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mapView: MapView
@@ -86,10 +90,19 @@ class MainActivity : AppCompatActivity() {
                 }
                 style.addLayer(stopLayer)
 
+                style.addImage("stripe-id", createStripePattern())
+
                 style.addSource(GeoJsonSource("exclusion-source"))
                 style.addLayer(FillLayer("exclusion-layer", "exclusion-source").withProperties(
-                    fillColor("#FF0000".toColorInt()), // Red shading
-                    fillOpacity(0.3f) // Semi-transparent so you can still see the map
+                    fillPattern("stripe-id"), // Red shading
+                    fillOpacity(0.3f), // Semi-transparent so you can still see the map
+                ))
+
+                style.addLayer(LineLayer("exclusion-outline-layer", "exclusion-source").withProperties(
+                    lineColor("#000000".toColorInt()), // Solid Black edge
+                    lineWidth(3f),                          // Make it thick and visible
+                    lineJoin("round"),                      // Smooths out the corners of the polygon
+                    lineCap("round")
                 ))
 
                 style.addSource(GeoJsonSource("pin-source"))
@@ -114,13 +127,18 @@ class MainActivity : AppCompatActivity() {
 
                     // If the tool is finished (e.g., tapped twice), it will return the Polygon
                     if (generatedFeature != null) {
+                        // Keep track of the raw shape the user just drew
                         allExclusions.add(generatedFeature)
 
-                        // Update the red exclusion layer
-                        val exclusionCollection = FeatureCollection.fromFeatures(allExclusions)
+                        // Merge all raw shapes into one unified flat polygon
+                        val mergedFeature = UnionHelper.mergeFeatures(allExclusions)
+
+                        // Tell the map to draw ONLY the merged flat result
+                        val displayList = if (mergedFeature != null) listOf(mergedFeature) else emptyList()
+                        val exclusionCollection = FeatureCollection.fromFeatures(displayList)
+
                         style.getSourceAs<GeoJsonSource>("exclusion-source")?.setGeoJson(exclusionCollection.toJson())
 
-                        // Clear the tool and reset the map to normal dragging
                         setTool(null)
                     }
                     true // We handled the click, don't pass it to anything else
@@ -151,6 +169,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
         return dbPath
+    }
+
+    private fun createStripePattern(): Bitmap {
+        val size = 64 // Size of the repeating tile
+        val bitmap = createBitmap(size, size)
+        val canvas = Canvas(bitmap)
+
+        val paint = Paint().apply {
+            color = "#FF0000".toColorInt() // Red stripes
+            strokeWidth = 8f // Thickness of the stripes
+            isAntiAlias = true
+        }
+
+        // Draw diagonal lines that seamlessly tile
+        canvas.drawLine(0f, 0f, size.toFloat(), size.toFloat(), paint)
+        // Draw the corners so it repeats seamlessly across tile boundaries
+        canvas.drawLine(0f, -size.toFloat(), size * 2f, size.toFloat(), paint)
+        canvas.drawLine(-size.toFloat(), 0f, size.toFloat(), size * 2f, paint)
+
+        return bitmap
     }
 
     // MapLibre requires lifecycle management to prevent memory leaks[cite: 1]
