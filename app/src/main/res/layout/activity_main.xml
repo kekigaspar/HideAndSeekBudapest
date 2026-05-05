@@ -1,17 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Your MapView sits in the background[cite: 2] -->
+    <!-- The Map -->
     <org.maplibre.android.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <!-- A scrolling container for your tool buttons overlay -->
+    <com.example.hideseekbudapest.RadiusOverlayView
+        android:id="@+id/radiusOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- 1. THE CENTER CROSSHAIR (Hidden by default) -->
+    <!-- Using a built-in Android plus icon as a makeshift crosshair -->
+    <ImageView
+        android:id="@+id/targetReticle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:src="@android:drawable/ic_menu_add"
+        android:visibility="gone" />
+
+    <!-- 2. THE EDIT PANEL (Hidden by default) -->
+    <LinearLayout
+        android:id="@+id/editPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#E6FFFFFF"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <!-- Replace tvRadiusLabel and sliderRadius with this -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginVertical="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Radius (km): "
+                android:textColor="#000000"
+                android:textStyle="bold" />
+
+            <!-- The input box, restricted to decimal numbers -->
+            <EditText
+                android:id="@+id/inputRadius"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:hint="e.g. 5.5"
+                android:text="5.0"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchInOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Shade Inside"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancel"
+                android:backgroundTint="#888888" />
+
+            <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Confirm Shape"
+                android:backgroundTint="#00AA00" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 3. THE ORIGINAL TOOLBAR -->
     <HorizontalScrollView
+        android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -20,43 +108,17 @@
         android:scrollbars="none">
 
         <LinearLayout
-            style="?android:attr/buttonBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnCircleInside"
-                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btnStartCircle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Circle (In)" />
+                android:text="Add Circle Zone" />
 
-            <Button
-                android:id="@+id/btnCircleOutside"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Circle (Out)" />
-
-            <Button
-                android:id="@+id/btnLineRight"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Line (Right)" />
-
-            <Button
-                android:id="@+id/btnLineLeft"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="Line (Left)" />
-
+            <!-- Other tools go here -->
         </LinearLayout>
     </HorizontalScrollView>
 

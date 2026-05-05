@@ -31,11 +31,30 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import androidx.core.graphics.createBitmap
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.HorizontalScrollView
+import android.widget.Switch
+import androidx.core.view.isVisible
+import android.text.Editable // Make sure this is at the top of your file
+import android.text.TextWatcher
+import com.mapbox.turf.TurfConstants
+import com.mapbox.turf.TurfMeasurement
+import kotlin.math.hypot
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mapView: MapView
     private var activeTool: MapTool? = null
+    private var mapboxMap: org.maplibre.android.maps.MapLibreMap? = null
     private val allExclusions = mutableListOf<Feature>()
+
+    private lateinit var reticle: ImageView
+    private lateinit var editPanel: LinearLayout
+    private lateinit var mainToolbar: HorizontalScrollView
+    private lateinit var switchInOut: Switch
+    private lateinit var inputRadius: android.widget.EditText
+    private lateinit var radiusOverlay: RadiusOverlayView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +63,13 @@ class MainActivity : AppCompatActivity() {
         MapLibre.getInstance(this)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.btnCircleInside).setOnClickListener {
-            setTool(CircleTool(isInside = true))
-        }
-        findViewById<Button>(R.id.btnCircleOutside).setOnClickListener {
-            setTool(CircleTool(isInside = false))
-        }
+        mapView = findViewById(R.id.mapView)
+        reticle = findViewById(R.id.targetReticle)
+        editPanel = findViewById(R.id.editPanel)
+        mainToolbar = findViewById(R.id.mainToolbar)
+        inputRadius = findViewById(R.id.inputRadius)
+        switchInOut = findViewById(R.id.switchInOut)
+        radiusOverlay = findViewById(R.id.radiusOverlay)
 
         mapView = findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
@@ -57,6 +77,7 @@ class MainActivity : AppCompatActivity() {
         val dbFile = copyDatabaseFromAssets(this, "budapest_vector.mbtiles")
 
         mapView.getMapAsync { map ->
+            this.mapboxMap = map
             map.cameraPosition = CameraPosition.Builder()
                 .target(LatLng(47.4979, 19.0402))
                 .zoom(12.0)
@@ -105,13 +126,7 @@ class MainActivity : AppCompatActivity() {
                     lineCap("round")
                 ))
 
-                style.addSource(GeoJsonSource("pin-source"))
-                style.addLayer(CircleLayer("pin-layer", "pin-source").withProperties(
-                    circleRadius(6f),
-                    circleColor(Color.YELLOW),
-                    circleStrokeWidth(2f),
-                    circleStrokeColor(Color.BLACK)
-                ))
+                setupEditModeListeners()
 
                 map.addOnMapClickListener { latLng ->
                     val tool = activeTool ?: return@addOnMapClickListener false
@@ -120,10 +135,6 @@ class MainActivity : AppCompatActivity() {
 
                     // Pass the click down to whatever tool is currently active
                     val generatedFeature = tool.processClick(clickedPoint)
-
-                    // Update the UI to show the temporary yellow pins
-                    val pinCollection = FeatureCollection.fromFeatures(tool.getTempPins().map { Feature.fromGeometry(it) })
-                    style.getSourceAs<GeoJsonSource>("pin-source")?.setGeoJson(pinCollection.toJson())
 
                     // If the tool is finished (e.g., tapped twice), it will return the Polygon
                     if (generatedFeature != null) {
@@ -189,6 +200,118 @@ class MainActivity : AppCompatActivity() {
         canvas.drawLine(-size.toFloat(), 0f, size.toFloat(), size * 2f, paint)
 
         return bitmap
+    }
+
+    private fun setupEditModeListeners() {
+        val map = mapboxMap ?: return
+
+        // 1. Enter Edit Mode
+        findViewById<Button>(R.id.btnStartCircle).setOnClickListener {
+            mainToolbar.visibility = View.GONE
+            editPanel.visibility = View.VISIBLE
+            reticle.visibility = View.VISIBLE
+            radiusOverlay.visibility = View.VISIBLE // SHOW OVERLAY
+            updateLivePreview()
+        }
+
+        // 2. Listen to Map Movement (Updates live as they pan)
+        map.addOnCameraMoveListener {
+            if (editPanel.isVisible) {
+                updateLivePreview()
+            }
+        }
+
+        // 3. Listen to Slider (Updates live as they drag)
+        inputRadius.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // Not needed
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // Fire the update every time a number is typed or deleted
+                updateLivePreview()
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // Not needed
+            }
+        })
+
+        // 4. Listen to In/Out Switch
+        switchInOut.setOnCheckedChangeListener { _, _ -> updateLivePreview() }
+
+        // 5. Cancel Action
+        findViewById<Button>(R.id.btnCancel).setOnClickListener {
+            closeEditMode()
+        }
+
+        // 6. Confirm Action
+        findViewById<Button>(R.id.btnConfirm).setOnClickListener {
+            val center = map.cameraPosition.target
+
+            // Read the text. If it's empty or invalid, default to 0.0
+            val radiusKm = inputRadius.text.toString().toDoubleOrNull() ?: 0.0
+
+            // Don't let them confirm an invisible/invalid circle
+            if (radiusKm <= 0.0) return@setOnClickListener
+
+            val isInside = switchInOut.isChecked
+
+            val finalFeature = CircleTool.generateShape(
+                Point.fromLngLat(center!!.longitude, center.latitude),
+                radiusKm,
+                isInside
+            )
+
+            allExclusions.add(finalFeature)
+            val mergedFeature = UnionHelper.mergeFeatures(allExclusions)
+
+            val displayList = if (mergedFeature != null) listOf(mergedFeature) else emptyList()
+            map.style?.getSourceAs<GeoJsonSource>("exclusion-source")
+                ?.setGeoJson(FeatureCollection.fromFeatures(displayList).toJson())
+
+            closeEditMode()
+        }
+    }
+
+    private fun updateLivePreview() {
+        val map = mapboxMap ?: return
+
+        val radiusKm = inputRadius.text.toString().toDoubleOrNull() ?: 0.0
+
+        if (radiusKm <= 0.0) {
+            radiusOverlay.radiusPixels = 0f
+            return
+        }
+
+        // 1. Get the real-world center coordinate
+        val centerLatLng = map.cameraPosition.target
+        val centerPoint = Point.fromLngLat(centerLatLng!!.longitude, centerLatLng.latitude)
+
+        // 2. Calculate a real-world coordinate exactly 'radiusKm' away (e.g., moving directly East)
+        val edgePoint = TurfMeasurement.destination(centerPoint, radiusKm, 90.0, TurfConstants.UNIT_KILOMETERS)
+        val edgeLatLng = LatLng(edgePoint.latitude(), edgePoint.longitude())
+
+        // 3. Ask MapLibre to translate those GPS coordinates into literal Screen Pixels
+        val centerPixel = map.projection.toScreenLocation(centerLatLng)
+        val edgePixel = map.projection.toScreenLocation(edgeLatLng)
+
+        // 4. Calculate the pixel distance between the center and the edge
+        // Using standard Pythagorean theorem: a^2 + b^2 = c^2
+        val deltaX = edgePixel.x - centerPixel.x
+        val deltaY = edgePixel.y - centerPixel.y
+        val pixelDistance = hypot(deltaX.toDouble(), deltaY.toDouble()).toFloat()
+
+        // 5. Instantly update the Android view
+        radiusOverlay.radiusPixels = pixelDistance
+    }
+
+    private fun closeEditMode() {
+        editPanel.visibility = View.GONE
+        reticle.visibility = View.GONE
+        mainToolbar.visibility = View.VISIBLE
+        radiusOverlay.visibility = View.GONE // HIDE OVERLAY
+        radiusOverlay.radiusPixels = 0f
     }
 
     // MapLibre requires lifecycle management to prevent memory leaks[cite: 1]
