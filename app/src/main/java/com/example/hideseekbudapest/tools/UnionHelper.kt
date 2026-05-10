@@ -18,23 +18,11 @@ object UnionHelper {
     fun mergeFeatures(features: List<Feature>): Feature? {
         if (features.isEmpty()) return null
 
-        var combinedGeometry: Geometry? = null
-
-        for (feature in features) {
-            val geom = feature.geometry()
-
-            // We only process Polygons (which both our Circle and Line tools create)
-            if (geom is MapboxPolygon) {
-                val jtsGeom = toJtsPolygon(geom)
-
-                // This is the JTS magic that physically merges intersecting shapes
-                combinedGeometry = if (combinedGeometry == null) {
-                    jtsGeom
-                } else {
-                    combinedGeometry.union(jtsGeom)
-                }
-            }
-        }
+        // Idiomatic Kotlin functional chain to merge geometries
+        val combinedGeometry = features
+            .mapNotNull { it.geometry() as? MapboxPolygon }
+            .map { toJtsPolygon(it) }
+            .reduceOrNull { acc: Geometry, jtsPolygon: JtsPolygon -> acc.union(jtsPolygon) }
 
         return combinedGeometry?.let { fromJts(it) }?.let { Feature.fromGeometry(it) }
     }
@@ -45,10 +33,8 @@ object UnionHelper {
         val rings = mapboxPolygon.coordinates()
         if (rings.isEmpty()) return factory.createPolygon()
 
-        // 1. Create the outer boundary
         val exterior = factory.createLinearRing(rings[0].map { Coordinate(it.longitude(), it.latitude()) }.toTypedArray())
 
-        // 2. Create any interior holes (Needed for your 'Circle Outside' tool)
         val holes = rings.drop(1).map { ring ->
             factory.createLinearRing(ring.map { Coordinate(it.longitude(), it.latitude()) }.toTypedArray())
         }.toTypedArray()
@@ -59,11 +45,9 @@ object UnionHelper {
     private fun fromJts(jtsGeom: Geometry): MapboxGeometry? {
         return when (jtsGeom) {
             is JtsPolygon -> toMapboxPolygon(jtsGeom)
-            // If the user draws two shapes that DON'T touch, JTS creates a MultiPolygon
             is JtsMultiPolygon -> {
-                val polys = mutableListOf<MapboxPolygon>()
-                for (i in 0 until jtsGeom.numGeometries) {
-                    polys.add(toMapboxPolygon(jtsGeom.getGeometryN(i) as JtsPolygon))
+                val polys = (0 until jtsGeom.numGeometries).map { i ->
+                    toMapboxPolygon(jtsGeom.getGeometryN(i) as JtsPolygon)
                 }
                 MapboxMultiPolygon.fromPolygons(polys)
             }

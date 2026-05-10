@@ -2,11 +2,11 @@ package com.example.hideseekbudapest
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.DashPathEffect
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import androidx.core.graphics.toColorInt
 
 class RadiusOverlayView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
@@ -21,7 +21,7 @@ class RadiusOverlayView @JvmOverloads constructor(
 
     // The brush used to draw the dashed circle
     private val paint = Paint().apply {
-        color = "#0000FF".toColorInt() // Blue
+        color = Color.BLUE
         style = Paint.Style.STROKE
         strokeWidth = 6f
         isAntiAlias = true

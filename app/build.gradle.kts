@@ -48,4 +48,6 @@ dependencies {
     implementation(libs.mapbox.sdk.turf)
     implementation(libs.mapbox.sdk.geojson)
     implementation(libs.jts.core)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.ktx)
 }
