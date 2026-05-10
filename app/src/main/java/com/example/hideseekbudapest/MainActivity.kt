@@ -24,6 +24,7 @@ import kotlinx.coroutines.withContext
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
+import org.maplibre.android.geometry.LatLngBounds
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
@@ -79,13 +80,28 @@ class MainActivity : AppCompatActivity() {
 
             mapView.getMapAsync { map ->
                 this@MainActivity.mapboxMap = map
+
+                // 1. Create the boundary box for Inner Budapest
+                val budapestBounds = LatLngBounds.Builder()
+                    .include(LatLng(47.530, 19.110)) // North East Corner
+                    .include(LatLng(47.460, 19.010)) // South West Corner
+                    .build()
+
+                // 2. Lock the camera panning to this box
+                map.setLatLngBoundsForCameraTarget(budapestBounds)
+
+                // 3. Prevent zooming out too far (Zoom 11 or 12 is usually good for a city)
+                map.setMinZoomPreference(10.5)
+
+                // 4. (Optional) Prevent zooming in too close if you want to hide street-level detail
+                // map.setMaxZoomPreference(18.0)
+
                 map.cameraPosition = CameraPosition.Builder()
                     .target(LatLng(47.4979, 19.0402)) // Budapest Center
-                    .zoom(12.0)
+                    .zoom(12.5) // Start slightly zoomed in
                     .build()
 
                 map.setStyle(Style.Builder().fromUri("asset://awsStyle.json")) { style ->
-                    // 2. Extracted Styling
                     MapStyleManager.setupTransitAndExclusionStyle(style, dbFile)
                     setupEditModeListeners()
                 }
@@ -207,13 +223,18 @@ class MainActivity : AppCompatActivity() {
             ActiveTool.CIRCLE -> {
                 val view = toolSettingsContainer.getChildAt(0)
                 val inputRadius = view?.findViewById<EditText>(R.id.inputRadius)
+                val switchInOut = view?.findViewById<Switch>(R.id.switchInOut) // Grab the switch
                 val radiusKm = inputRadius?.text.toString().toDoubleOrNull() ?: 0.0
 
+                // Pass the switch state to the view
+                radiusOverlay.isInside = switchInOut?.isChecked ?: true
                 radiusOverlay.radiusPixels = PreviewCalculator.calculateRadiusInPixels(
                     centerLatLng, radiusKm, map.projection
                 )
             }
             ActiveTool.HOT_COLD -> {
+                // (This remains exactly the same as before, since we are already
+                //  passing isHotter into updatePoints!)
                 val prevLoc = savedPreviousLocation
                 if (prevLoc != null) {
                     val prevPixel = map.projection.toScreenLocation(prevLoc)
