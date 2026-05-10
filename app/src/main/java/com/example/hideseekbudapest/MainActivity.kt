@@ -46,6 +46,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editPanel: LinearLayout
     private lateinit var mainToolbar: HorizontalScrollView
     private lateinit var toolSettingsContainer: FrameLayout
+    private lateinit var inputLineSearch: EditText
+    private lateinit var btnSearchLine: Button
+    private lateinit var switchLineVisible: Switch
 
     // Overlays
     private lateinit var radiusOverlay: RadiusOverlayView
@@ -71,6 +74,9 @@ class MainActivity : AppCompatActivity() {
         toolSettingsContainer = findViewById(R.id.toolSettingsContainer)
         radiusOverlay = findViewById(R.id.radiusOverlay)
         hotColdOverlay = findViewById(R.id.hotColdOverlay)
+        inputLineSearch = findViewById(R.id.inputLineSearch)
+        btnSearchLine = findViewById(R.id.btnSearchLine)
+        switchLineVisible = findViewById(R.id.switchLineVisible)
 
         mapView.onCreate(savedInstanceState)
 
@@ -83,8 +89,8 @@ class MainActivity : AppCompatActivity() {
 
                 // 1. Create the boundary box for Inner Budapest
                 val budapestBounds = LatLngBounds.Builder()
-                    .include(LatLng(47.530, 19.110)) // North East Corner
-                    .include(LatLng(47.460, 19.010)) // South West Corner
+                    .include(LatLng(47.570, 19.170)) // Pushed further North-East (Újpest / Rákospalota)
+                    .include(LatLng(47.420, 18.950)) // Pushed further South-West (Budafok / Kelenföld edges)
                     .build()
 
                 // 2. Lock the camera panning to this box
@@ -110,6 +116,8 @@ class MainActivity : AppCompatActivity() {
 
         // 3. Start watching the ViewModel for updates
         setupObservers()
+
+        setupSearchListeners()
     }
 
     private fun setupObservers() {
@@ -127,6 +135,30 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             viewModel.isEditing.collect { isEditing ->
                 toggleEditModeUI(isEditing)
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.highlightedLine.collect { highlighted ->
+                mapboxMap?.style?.let { style ->
+                    MapStyleManager.updateDynamicTransitStyles(
+                        style,
+                        highlighted,
+                        viewModel.disabledLines.value
+                    )
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.disabledLines.collect { disabled ->
+                mapboxMap?.style?.let { style ->
+                    MapStyleManager.updateDynamicTransitStyles(
+                        style,
+                        viewModel.highlightedLine.value,
+                        disabled
+                    )
+                }
             }
         }
     }
@@ -298,6 +330,36 @@ class MainActivity : AppCompatActivity() {
             radiusOverlay.radiusPixels = 0f
             hotColdOverlay.updatePoints(null, null, true)
             activeTool = ActiveTool.NONE
+        }
+    }
+
+    private fun setupSearchListeners() {
+        btnSearchLine.setOnClickListener {
+            val query = inputLineSearch.text.toString().trim()
+            if (query.isNotEmpty()) {
+                viewModel.setHighlightedLine(query)
+
+                // NEW: Delegate the heavy lifting to the Controller
+                mapboxMap?.let { map ->
+                    lifecycleScope.launch {
+                        TransitSearchController.findAndZoomToLine(map, query)
+                    }
+                }
+
+                // Show and update the toggle switch for this specific line
+                switchLineVisible.isVisible = true
+                switchLineVisible.isChecked = !viewModel.disabledLines.value.contains(query)
+                switchLineVisible.text = "Show $query on Map"
+            } else {
+                // Clear search
+                viewModel.setHighlightedLine(null)
+                switchLineVisible.isVisible = false
+            }
+        }
+
+        switchLineVisible.setOnCheckedChangeListener { _, isChecked ->
+            val currentLine = viewModel.highlightedLine.value ?: return@setOnCheckedChangeListener
+            viewModel.toggleLineVisibility(currentLine, isChecked)
         }
     }
 

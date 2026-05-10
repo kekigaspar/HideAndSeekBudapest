@@ -21,6 +21,12 @@ class MapToolViewModel : ViewModel() {
     private val _isEditing = MutableStateFlow(false)
     val isEditing: StateFlow<Boolean> = _isEditing.asStateFlow()
 
+    private val _highlightedLine = MutableStateFlow<String?>(null)
+    val highlightedLine: StateFlow<String?> = _highlightedLine.asStateFlow()
+
+    private val _disabledLines = MutableStateFlow<Set<String>>(emptySet())
+    val disabledLines: StateFlow<Set<String>> = _disabledLines.asStateFlow()
+
     // Actions the Activity can call
     fun toggleEditMode(editing: Boolean) {
         _isEditing.value = editing
@@ -45,5 +51,19 @@ class MapToolViewModel : ViewModel() {
         val mergedFeature = UnionHelper.mergeFeatures(_allExclusions)
         val displayList = listOfNotNull(mergedFeature)
         _mergedGeoJson.value = FeatureCollection.fromFeatures(displayList).toJson()
+    }
+
+    fun setHighlightedLine(lineName: String?) {
+        _highlightedLine.value = lineName
+    }
+
+    fun toggleLineVisibility(lineName: String, isVisible: Boolean) {
+        val currentSet = _disabledLines.value.toMutableSet()
+        if (isVisible) {
+            currentSet.remove(lineName)
+        } else {
+            currentSet.add(lineName)
+        }
+        _disabledLines.value = currentSet
     }
 }

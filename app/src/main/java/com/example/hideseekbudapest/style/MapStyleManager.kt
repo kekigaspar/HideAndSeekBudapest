@@ -91,6 +91,45 @@ object MapStyleManager {
         ))
     }
 
+    fun updateDynamicTransitStyles(
+        style: Style,
+        highlightedLine: String?,
+        disabledLines: Set<String>
+    ) {
+        val lineLayer = style.getLayerAs<LineLayer>("line-layer") ?: return
+        // Grab the label layer too!
+        val labelLayer = style.getLayerAs<SymbolLayer>("line-label-layer")
+
+        if (disabledLines.isEmpty()) {
+            lineLayer.setFilter(literal(true))
+            labelLayer?.setFilter(literal(true)) // Show labels
+        } else {
+            val filterExpression = not(`in`(toString(get("line_name")), literal(disabledLines.toTypedArray())))
+
+            lineLayer.setFilter(filterExpression)
+            labelLayer?.setFilter(filterExpression) // Hide labels for disabled lines
+        }
+
+        if (highlightedLine != null) {
+            lineLayer.setProperties(
+                lineWidth(
+                    switchCase(
+                        eq(toString(get("line_name")), literal(highlightedLine)), literal(8f),
+                        literal(4f)
+                    )
+                ),
+                lineColor(
+                    switchCase(
+                        eq(toString(get("line_name")), literal(highlightedLine)), color(Color.YELLOW),
+                        get("color")
+                    )
+                )
+            )
+        } else {
+            lineLayer.setProperties(lineWidth(4f), lineColor(get("color")))
+        }
+    }
+
     private fun createStripePattern(): Bitmap {
         val size = 64
         val bitmap = createBitmap(size, size)
