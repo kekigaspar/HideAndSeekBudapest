@@ -1,6 +1,8 @@
 package com.example.hideseekbudapest
 
 import androidx.lifecycle.ViewModel
+import com.example.hideseekbudapest.tools.MapAreaTool
+import com.example.hideseekbudapest.tools.ToolParams
 import com.example.hideseekbudapest.tools.UnionHelper
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
@@ -26,6 +28,16 @@ class MapToolViewModel : ViewModel() {
 
     fun addExclusion(feature: Feature) {
         _allExclusions.add(feature)
+        updateMergedGeometry()
+    }
+
+    // Generic function to apply ANY tool that follows our contract
+    fun <T : ToolParams> applyTool(tool: MapAreaTool<T>, params: T) {
+        // Generate the shape
+        val newFeature = tool.generateFeature(params)
+
+        // Add it to the list and merge (UnionHelper handles the heavy lifting!)
+        _allExclusions.add(newFeature)
         updateMergedGeometry()
     }
 

@@ -6,13 +6,24 @@ import com.mapbox.geojson.Polygon
 import com.mapbox.turf.TurfConstants
 import com.mapbox.turf.TurfTransformation
 
-object CircleTool {
+data class CircleParams(
+    val center: Point,
+    val radiusKm: Double,
+    val isInside: Boolean
+) : ToolParams
 
-    // Generates the geometry based on the exact parameters passed in
-    fun generateShape(center: Point, radiusKm: Double, isInside: Boolean): Feature {
-        val circle = TurfTransformation.circle(center, radiusKm, 64, TurfConstants.UNIT_KILOMETERS)
+object CircleTool : MapAreaTool<CircleParams> {
+    override val toolName = "Circle Exclusion"
 
-        return if (isInside) {
+    override fun generateFeature(params: CircleParams): Feature {
+        val circle = TurfTransformation.circle(
+            params.center,
+            params.radiusKm,
+            64,
+            TurfConstants.UNIT_KILOMETERS
+        )
+
+        return if (params.isInside) {
             Feature.fromGeometry(circle)
         } else {
             val worldCoords = listOf(

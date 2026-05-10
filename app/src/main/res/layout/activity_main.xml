@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- The Map -->
     <org.maplibre.android.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
@@ -15,8 +14,12 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-    <!-- 1. THE CENTER CROSSHAIR (Hidden by default) -->
-    <!-- Using a built-in Android plus icon as a makeshift crosshair -->
+    <com.example.hideseekbudapest.HotColdOverlayView
+        android:id="@+id/hotColdOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ImageView
         android:id="@+id/targetReticle"
         android:layout_width="48dp"
@@ -25,7 +28,6 @@
         android:src="@android:drawable/ic_menu_add"
         android:visibility="gone" />
 
-    <!-- 2. THE EDIT PANEL (Hidden by default) -->
     <LinearLayout
         android:id="@+id/editPanel"
         android:layout_width="match_parent"
@@ -36,40 +38,10 @@
         android:padding="16dp"
         android:visibility="gone">
 
-        <!-- Replace tvRadiusLabel and sliderRadius with this -->
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/toolSettingsContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginVertical="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Radius (km): "
-                android:textColor="#000000"
-                android:textStyle="bold" />
-
-            <!-- The input box, restricted to decimal numbers -->
-            <EditText
-                android:id="@+id/inputRadius"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="e.g. 5.5"
-                android:text="5.0"
-                android:layout_marginStart="8dp"/>
-        </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchInOut"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="Shade Inside"
-            android:textColor="#000000" />
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -97,7 +69,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- 3. THE ORIGINAL TOOLBAR -->
     <HorizontalScrollView
         android:id="@+id/mainToolbar"
         android:layout_width="match_parent"
@@ -116,10 +87,15 @@
                 android:id="@+id/btnStartCircle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add Circle Zone" />
+                android:text="Circle Zone" />
 
-            <!-- Other tools go here -->
+            <Space android:layout_width="8dp" android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnStartHotCold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot/Cold Zone" />
         </LinearLayout>
     </HorizontalScrollView>
-
 </FrameLayout>

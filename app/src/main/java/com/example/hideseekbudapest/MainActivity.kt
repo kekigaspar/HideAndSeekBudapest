@@ -6,17 +6,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Switch
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import com.example.hideseekbudapest.style.MapStyleManager
 import com.example.hideseekbudapest.tools.*
-import com.mapbox.geojson.Feature
-import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
@@ -26,24 +30,31 @@ import org.maplibre.android.maps.Style
 import org.maplibre.android.style.sources.GeoJsonSource
 import java.io.File
 import java.io.FileOutputStream
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import androidx.activity.viewModels
 
 class MainActivity : AppCompatActivity() {
+
+    // ViewModel handles the state and math
     private val viewModel: MapToolViewModel by viewModels()
+
+    // Map variables
     private lateinit var mapView: MapView
     private var mapboxMap: MapLibreMap? = null
-    private val allExclusions = mutableListOf<Feature>()
 
+    // Core UI
     private lateinit var reticle: ImageView
     private lateinit var editPanel: LinearLayout
     private lateinit var mainToolbar: HorizontalScrollView
-    private lateinit var switchInOut: Switch
-    private lateinit var inputRadius: EditText
+    private lateinit var toolSettingsContainer: FrameLayout
+
+    // Overlays
     private lateinit var radiusOverlay: RadiusOverlayView
+    private lateinit var hotColdOverlay: HotColdOverlayView
+
+    // Tool State
+    private var activeTool: ActiveTool = ActiveTool.NONE
+    private var savedPreviousLocation: LatLng? = null
+
+    enum class ActiveTool { NONE, CIRCLE, HOT_COLD }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,64 +67,56 @@ class MainActivity : AppCompatActivity() {
         reticle = findViewById(R.id.targetReticle)
         editPanel = findViewById(R.id.editPanel)
         mainToolbar = findViewById(R.id.mainToolbar)
-        inputRadius = findViewById(R.id.inputRadius)
-        switchInOut = findViewById(R.id.switchInOut)
+        toolSettingsContainer = findViewById(R.id.toolSettingsContainer)
         radiusOverlay = findViewById(R.id.radiusOverlay)
+        hotColdOverlay = findViewById(R.id.hotColdOverlay)
 
         mapView.onCreate(savedInstanceState)
 
-        // Launch a coroutine tied to the Activity lifecycle
+        // 1. Load DB in background, then init map
         lifecycleScope.launch {
-            // This runs on the background thread and pauses execution here until finished
             val dbFile = copyDatabaseFromAssets(this@MainActivity, "budapest_vector.mbtiles")
 
-            // Once the DB is ready, this continues on the Main Thread to set up the UI
             mapView.getMapAsync { map ->
                 this@MainActivity.mapboxMap = map
                 map.cameraPosition = CameraPosition.Builder()
-                    .target(LatLng(47.4979, 19.0402))
+                    .target(LatLng(47.4979, 19.0402)) // Budapest Center
                     .zoom(12.0)
                     .build()
 
                 map.setStyle(Style.Builder().fromUri("asset://awsStyle.json")) { style ->
+                    // 2. Extracted Styling
                     MapStyleManager.setupTransitAndExclusionStyle(style, dbFile)
                     setupEditModeListeners()
                 }
             }
         }
 
+        // 3. Start watching the ViewModel for updates
         setupObservers()
     }
 
     private fun setupObservers() {
-        // 2. Observe the GeoJSON state. Whenever the ViewModel updates it, the map updates automatically!
+        // Automatically update the map when the ViewModel merges new shapes
         lifecycleScope.launch {
             viewModel.mergedGeoJson.collect { geoJsonString ->
                 if (geoJsonString != null) {
-                    mapboxMap?.style?.getSourceAs<GeoJsonSource>("exclusion-source")
+                    mapboxMap?.style?.getSourceAs<GeoJsonSource>(MapStyleManager.EXCLUSION_SOURCE_ID)
                         ?.setGeoJson(geoJsonString)
                 }
             }
         }
 
-        // 3. Observe the Edit Mode state to toggle UI
+        // Automatically toggle the UI when ViewModel changes Edit Mode
         lifecycleScope.launch {
             viewModel.isEditing.collect { isEditing ->
-                editPanel.isVisible = isEditing
-                reticle.isVisible = isEditing
-                radiusOverlay.isVisible = isEditing
-                mainToolbar.isVisible = !isEditing
-
-                if (!isEditing) {
-                    radiusOverlay.radiusPixels = 0f
-                }
+                toggleEditModeUI(isEditing)
             }
         }
     }
+
     private suspend fun copyDatabaseFromAssets(context: Context, dbName: String): File {
         val dbPath = context.getDatabasePath(dbName)
-
-        // Switch to the IO thread for file operations
         withContext(Dispatchers.IO) {
             if (!dbPath.exists()) {
                 dbPath.parentFile?.mkdirs()
@@ -124,82 +127,160 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
         return dbPath
     }
 
     private fun setupEditModeListeners() {
         val map = mapboxMap ?: return
 
+        // Start Tools
         findViewById<Button>(R.id.btnStartCircle).setOnClickListener {
-            toggleEditModeUI(true)
-            updateLivePreview()
+            startTool(ActiveTool.CIRCLE)
         }
 
+        findViewById<Button>(R.id.btnStartHotCold).setOnClickListener {
+            savedPreviousLocation = null
+            startTool(ActiveTool.HOT_COLD)
+        }
+
+        // Update previews when camera moves
         map.addOnCameraMoveListener {
             if (editPanel.isVisible) updateLivePreview()
         }
 
-        inputRadius.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                updateLivePreview()
-            }
-            override fun afterTextChanged(s: Editable?) {}
-        })
-
-        switchInOut.setOnCheckedChangeListener { _, _ -> updateLivePreview() }
-
+        // Confirm / Cancel
         findViewById<Button>(R.id.btnCancel).setOnClickListener {
-            toggleEditModeUI(false)
+            viewModel.toggleEditMode(false)
         }
 
         findViewById<Button>(R.id.btnConfirm).setOnClickListener {
-            val centerLatLng = map.cameraPosition.target ?: return@setOnClickListener
-            val radiusKm = inputRadius.text.toString().toDoubleOrNull() ?: 0.0
-
-            if (radiusKm <= 0.0) return@setOnClickListener
-
-            val finalFeature = CircleTool.generateShape(
-                Point.fromLngLat(centerLatLng.longitude, centerLatLng.latitude),
-                radiusKm,
-                switchInOut.isChecked
-            )
-
-            allExclusions.add(finalFeature)
-            val mergedFeature = UnionHelper.mergeFeatures(allExclusions)
-
-            val displayList = listOfNotNull(mergedFeature)
-            map.style?.getSourceAs<GeoJsonSource>("exclusion-source")
-                ?.setGeoJson(FeatureCollection.fromFeatures(displayList).toJson())
-
-            toggleEditModeUI(false)
+            executeActiveTool(map)
         }
+    }
+
+    private fun startTool(tool: ActiveTool) {
+        activeTool = tool
+        toolSettingsContainer.removeAllViews()
+
+        val layoutRes = when (tool) {
+            ActiveTool.CIRCLE -> R.layout.layout_tool_circle
+            ActiveTool.HOT_COLD -> R.layout.layout_tool_hot_cold
+            ActiveTool.NONE -> return
+        }
+
+        val view = layoutInflater.inflate(layoutRes, toolSettingsContainer, true)
+
+        // Attach layout-specific listeners
+        if (tool == ActiveTool.CIRCLE) {
+            val inputRadius = view.findViewById<EditText>(R.id.inputRadius)
+            val switchInOut = view.findViewById<Switch>(R.id.switchInOut)
+
+            inputRadius.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    updateLivePreview()
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            })
+            switchInOut.setOnCheckedChangeListener { _, _ -> updateLivePreview() }
+
+        } else if (tool == ActiveTool.HOT_COLD) {
+            val btnSetPrevious = view.findViewById<Button>(R.id.btnSetPrevious)
+            val switchHotter = view.findViewById<Switch>(R.id.switchHotter)
+
+            btnSetPrevious.setOnClickListener {
+                savedPreviousLocation = mapboxMap?.cameraPosition?.target
+                updateLivePreview()
+            }
+            switchHotter.setOnCheckedChangeListener { _, _ -> updateLivePreview() }
+        }
+
+        viewModel.toggleEditMode(true)
+        updateLivePreview()
     }
 
     private fun updateLivePreview() {
         val map = mapboxMap ?: return
-        val radiusKm = inputRadius.text.toString().toDoubleOrNull() ?: 0.0
         val centerLatLng = map.cameraPosition.target ?: return
 
-        radiusOverlay.radiusPixels = PreviewCalculator.calculateRadiusInPixels(
-            centerLatLng,
-            radiusKm,
-            map.projection
-        )
+        when (activeTool) {
+            ActiveTool.CIRCLE -> {
+                val view = toolSettingsContainer.getChildAt(0)
+                val inputRadius = view?.findViewById<EditText>(R.id.inputRadius)
+                val radiusKm = inputRadius?.text.toString().toDoubleOrNull() ?: 0.0
+
+                radiusOverlay.radiusPixels = PreviewCalculator.calculateRadiusInPixels(
+                    centerLatLng, radiusKm, map.projection
+                )
+            }
+            ActiveTool.HOT_COLD -> {
+                val prevLoc = savedPreviousLocation
+                if (prevLoc != null) {
+                    val prevPixel = map.projection.toScreenLocation(prevLoc)
+                    val currPixel = map.projection.toScreenLocation(centerLatLng)
+
+                    val view = toolSettingsContainer.getChildAt(0)
+                    val isHotter = view?.findViewById<Switch>(R.id.switchHotter)?.isChecked ?: true
+
+                    hotColdOverlay.updatePoints(prevPixel, currPixel, isHotter)
+                } else {
+                    hotColdOverlay.updatePoints(null, null, true)
+                }
+            }
+            ActiveTool.NONE -> {}
+        }
+    }
+
+    private fun executeActiveTool(map: MapLibreMap) {
+        val centerLatLng = map.cameraPosition.target ?: return
+        val view = toolSettingsContainer.getChildAt(0)
+
+        when (activeTool) {
+            ActiveTool.CIRCLE -> {
+                val radiusKm = view.findViewById<EditText>(R.id.inputRadius).text.toString().toDoubleOrNull() ?: 0.0
+                if (radiusKm <= 0.0) return
+
+                val isInside = view.findViewById<Switch>(R.id.switchInOut).isChecked
+                val params = CircleParams(
+                    Point.fromLngLat(centerLatLng.longitude, centerLatLng.latitude),
+                    radiusKm,
+                    isInside
+                )
+                viewModel.applyTool(CircleTool, params)
+            }
+            ActiveTool.HOT_COLD -> {
+                val prevLoc = savedPreviousLocation ?: return
+                val isHotter = view.findViewById<Switch>(R.id.switchHotter).isChecked
+
+                val params = HotterColderParams(
+                    Point.fromLngLat(prevLoc.longitude, prevLoc.latitude),
+                    Point.fromLngLat(centerLatLng.longitude, centerLatLng.latitude),
+                    isHotter
+                )
+                viewModel.applyTool(HotterColderTool, params)
+            }
+            ActiveTool.NONE -> return
+        }
+
+        viewModel.toggleEditMode(false)
     }
 
     private fun toggleEditModeUI(isEditing: Boolean) {
         editPanel.isVisible = isEditing
         reticle.isVisible = isEditing
-        radiusOverlay.isVisible = isEditing
         mainToolbar.isVisible = !isEditing
+
+        radiusOverlay.isVisible = isEditing && activeTool == ActiveTool.CIRCLE
+        hotColdOverlay.isVisible = isEditing && activeTool == ActiveTool.HOT_COLD
 
         if (!isEditing) {
             radiusOverlay.radiusPixels = 0f
+            hotColdOverlay.updatePoints(null, null, true)
+            activeTool = ActiveTool.NONE
         }
     }
 
+    // Standard MapLibre Lifecycle Methods
     override fun onStart() { super.onStart(); mapView.onStart() }
     override fun onResume() { super.onResume(); mapView.onResume() }
     override fun onPause() { super.onPause(); mapView.onPause() }

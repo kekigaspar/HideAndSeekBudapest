@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnSetPrevious"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Previous Location to Map Center"
+        android:backgroundTint="#5555FF"/>
+
+    <Switch
+        android:id="@+id/switchHotter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="Status: HOTTER"
+        android:textOff="COLDER"
+        android:textOn="HOTTER"
+        android:showText="true"
+        android:checked="true" />
+</LinearLayout>
